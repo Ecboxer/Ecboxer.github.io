@@ -3,25 +3,30 @@
     <head>
 	<link rel="stylesheet" type="text/css" href="styles/main.css">
 	<meta charset="utf-8">
-	<script src="d3/d3.js"></script>
+	<script src="https://d3js.org/d3.v5.min.js"></script>
 	<title>Eric Boxer</title>
+	<style>
+	    .moved {
+	    transform: translate(9px, 0px);
+	    }
+	</style>
     </head>
     <body>
 	<script>
 	 //Display specifications
 	 var w = 400;
 	 var h = 400;
-
 	 var svg = d3.select("div").append("svg")
 		     .attr("width", w)
 		     .attr("height", h);
 	 
 	</script>
-	<div>
-	    <svg width="400" height="75">
-		<text x="8" y="35" style="font-size:32px">Eric Boxer</text>
-		<text x ="10" y ="60">Columbia University MS Data Science</text>
-	    </svg>
+	<svg width="400" height="75">
+	    <text x="8" y="35" style="font-size:32px">Eric Boxer</text>
+	    <text x ="10" y ="60">Columbia University MS Data Science</text>
+	</svg>
+	<div class="moved">
+	    <p x="5"><a href="dataViz/index.html">Data Visualizations</a></p>
 	</div>
 	<footer>
 	    <a href="https://github.com/Ecboxer"><img src="images/GitHub-Mark/PNG/GitHub-Mark-32px.png"/></a>
