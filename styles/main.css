@@ -9,3 +9,6 @@ a img {
     float: left;
     margin-left: 1%;
 }
+a {
+    font-family: sans-serif;
+}
