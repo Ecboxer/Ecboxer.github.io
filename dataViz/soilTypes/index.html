@@ -4,14 +4,62 @@
 	<meta charset="utf-8">
 	<title>Data Visualizations: Soil Types</title>
 	<script src="https://d3js.org/d3.v5.min.js" charset="utf-8"></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.0.1/spin.min.js'></script>
     </head>
     <body>
+	<section id="chart"></section>
 	<script type="text/javascript">
 
 	 //Display specifications
 	 var margin = {top: 10, right: 10, bottom: 10, left: 10};
-	 var width = 1500 - margin.left - margin.right;
-	 var height = 900 - margin.top - margin.bottom;
+
+	 //Config references
+	 var chartConfig = {
+	     target: 'chart',
+	     data_url: "resources/trainSoilCodes.csv",
+	     width: 1500 - margin.left - margin.right,
+	     height: 900 - margin.top - margin.bottom,
+	     val: 90
+	 };
+
+	 //Loader settings
+	 var opts = {
+	     lines: 9, // The number of lines to draw
+	     length: 9, // The length of each line
+	     width: 5, // The line thickness
+	     radius: 14, // The radius of the inner circle
+	     color: '#EE3124', // #rgb or #rrggbb or array of colors
+	     speed: 1.9, // Rounds per second
+	     trail: 40, // Afterglow percentage
+	     className: 'spinner' // The CSS class to assign to the spinner
+	 };
+
+	 var target = document.getElementById(chartConfig.target);
+
+	 //Callback function wrapped for loader in 'init' function
+	 function init() {
+
+	     //Trigger loader
+	     var spinner = new Spinner(opts).spin(target);
+
+	     //Slow the json load intentionally, so we can see it every load
+	     setTimeout(function() {
+
+		 //Load json data and trigger callback
+		 d3.json(chartConfig.data_url, function(data) {
+
+		     //Stop spin.js loader
+		     spinner.stop();
+
+		     //Instantiate chart within callback
+		     chart(data);
+
+		 });
+
+	     }, 1500);
+	 };
+
+	 init();
 
 	 //Dimensions for the data visualization, NEED TO MANUALLY ADJUST FOR DIFFERENT DATA
 	 //Write function to determine col,row automatically
@@ -19,14 +67,14 @@
 	 var col = 189;
 	 var row = 80;
 
-	 var svg = d3.select("body")
+	 var svg = d3.select("section")
 		     .append("svg")
-		     .attr("width", width + margin.left + margin.right)
-		     .attr("height", height + margin.top + margin.bottom)
+		     .attr("width", chartConfig.width + margin.left + margin.right)
+		     .attr("height", chartConfig.height + margin.top + margin.bottom)
 		     .append("g")
 		     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-	 d3.csv("resources/trainSoilCodes.csv", function (d) {
+	 var chart = d3.csv(chartConfig.data_url, function (d) {
 	     return {
 		 id: d.Id,
 		 soilType: d.Soil_Types
@@ -38,11 +86,11 @@
 	     //Set scales    
 	     var xScale = d3.scaleLinear()
 			    .domain([0, col])
-			    .range([0, width]);
+			    .range([0, chartConfig.width]);
 	     
 	     var yScale = d3.scaleLinear()
 			    .domain([0, row])
-			    .range([0, height]);
+			    .range([0, chartConfig.height]);
 	     
   	     var rect = svg.selectAll("rect")
 			   .data(data)
@@ -54,8 +102,8 @@
 			   .attr("y", function (d) {
 			       return yScale(Math.ceil((d.id / col) - 1));
 			   })
-			   .attr("width", width / col)
-			   .attr("height", height / row)
+			   .attr("width", chartConfig.width / col)
+			   .attr("height", chartConfig.height / row)
 	     		   .style("fill", function (d) {
 			       return "rgba(0,250,0," + d.soilType / 40 + ")";
 			   })
@@ -67,8 +115,8 @@
 				 .attr("y", function (d) {
 				     return yScale(Math.ceil((d.id / col) - 1)) - 2;
 				 })
-				 .attr("width", width / col + 4)
-				 .attr("height", height / row + 4)
+				 .attr("width", chartConfig.width / col + 4)
+				 .attr("height", chartConfig.height / row + 4)
 				 .style("fill", "orange");
 			   })
 			   .on("mouseout", function (d) {
@@ -79,8 +127,8 @@
 				 .attr("y", function (d) {
 				     return yScale(Math.ceil((d.id / col) - 1));
 				 })
-				 .attr("width", width / col)
-				 .attr("height", height / row)
+				 .attr("width", chartConfig.width / col)
+				 .attr("height", chartConfig.height / row)
 				 .style("fill", function (d) {
 				     return "rgba(0,250,0," + d.soilType / 40 + ")";
 				 })
