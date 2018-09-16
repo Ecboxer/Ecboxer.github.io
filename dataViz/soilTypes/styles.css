@@ -1,0 +1,25 @@
+div.ajax_loading {
+    position: relative;
+}
+
+/* Grab only the direct descendant of the div that is an image */
+div.ajax_loading > img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+/* Mark all children svg objects as being 50% transparent */
+div.ajax_loading svg {
+    opacity: 0.5;
+}
+
+/* It is best to size your chart so the loader always knows where to display */
+/* An id specifier '#' was used here */
+#performance_chart {
+    min-width: 400px;
+    min-height: 300px;}
+
