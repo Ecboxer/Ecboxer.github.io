@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+	<meta charset="utf-8">
+	<title>Weather Data</title>
+	<script src="d3/d3.js" charset="utf-8"></script>
+    </head>
+    <body>
+	<script type="text/javascript">
+
+	 //Display specifications
+	 var margin = {top: 10, right: 10, bottom: 10, left: 10};
+	 var width = 1600 - margin.left - margin.right;
+	 var height = 800 - margin.top - margin.bottom;
+	 var widthLeg = 200 - margin.left - margin.right;
+
+	 //Load the data
+	 d3.csv("resources/weatherData.csv", function (d) {
+	     return { year: d.Year,
+		      month: d.Month,
+		      day: d.Day,
+		      hour: d.Hour,
+		      sunlight: d.SunlightMin,
+		      weather: d.HourlySkyWeather,
+		      visibility: d.HourlyVisibility,
+		      windDirection: d.HourlyWindDirection,
+		      windSpeed: d.HourlyWindSpeed,
+		      sunriseHour: d.SunriseHour,
+		      sunriseMin: d.SunriseMin,
+		      sunsetHour: d.SunsetHour,
+		      sunsetMin: d.SunsetMin
+	     };
+	 }).then(function (data) {
+
+	     var xScale = d3.scaleLinear()
+			    .domain([0, 365]) //Plan to take i mod 24 for days since start
+			    .range([0, width]);
+	     
+	     var yScale = d3.scaleLinear()
+			    .domain([0, 24]) //Have midnight on top and noon in the middle
+			    .range([0, height]);
+
+	     var yScaleLeg = d3.scaleLinear()
+			       .domain([0, 10]) //yScale for rectLegend
+			       .range([0, height]);
+
+	     var lightScale = d3.scaleSequential(d3.interpolateInferno); //Blk to Ylw, 0 to 1
+
+	     var amScale = d3.scaleLinear() //Scale for pre-sunrise
+			     .domain([7, 0])
+			     .range([0, 0.5]);
+
+	     var pmScale = d3.scaleLinear() //Scale for post-sunset
+			     .domain([7, 0])
+			     .range([0, 0.5]);
+
+	     var dayScale = d3.scaleLinear() //Scale for daytime
+			      .domain([0, 8])
+			      .range([0.5, 1]);
+
+	     var vizScale = d3.scaleLinear() //Scale for visibility
+			      .domain([0, 9])
+			      .range([0.15, 1]);
+	     
+	     var container = d3.select("body")
+			       .append("svg")
+			       .attr("width", width + margin.left + margin.right)
+			       .attr("height", height + margin.top + margin.bottom)
+			       .append("g")
+			       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+	     var rect = container.selectAll("rect")
+				 .data(data)
+				 .enter()
+				 .append("rect")
+				 .attr("class", "hour")
+				 .attr("x", function (d, i) {
+				     return xScale(Math.floor(i / 24)); //Group hours in 24s
+				 })
+				 .attr("y", function (d) {
+				     return yScale(d.hour);
+				 })
+				 .attr("width", width / 365) //One day per column
+				 .attr("height", height / 24) //One hour per row
+				 .attr("fill", function (d) {
+				     if (Number(d.hour) < Number(d.sunriseHour)) {
+					 return lightScale(amScale(d.sunriseHour - d.hour));
+				     } else if (Number(d.hour) > Number(d.sunsetHour)) {
+					 return lightScale(pmScale(d.hour - d.sunsetHour));
+				     } else {
+					 return lightScale(dayScale(Math.min(d.hour - d.sunriseHour, d.sunsetHour - d.hour)));
+				     };
+				 })
+				 .attr("opacity", function (d) {
+				     if (d.visibility == 'NaN') {
+					 return 1.0;
+				     } else {
+					 return  vizScale(d.visibility);
+				     }
+				 });
+
+	     var dataLeg = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ];
+
+	     var dataLeg2 = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ];
+
+	     var containerLeg = d3.select("body")
+				  .append("svg")
+				  .attr("width", widthLeg + margin.left + margin.right)
+				  .attr("height", height + margin.top + margin.bottom)
+				  .append("g")
+				  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+	     
+	     var rectLegend = containerLeg.selectAll("rect")
+					  .data(dataLeg)
+					  .enter()
+					  .append("rect")
+					  .attr("x", 10)
+					  .attr("y", function (d) {
+					      return yScale(d + 2);
+					  })
+					  .attr("width", 20)
+					  .attr("height", 20)
+					  .attr("fill", function (d) {
+					      return (lightScale(d / 12));
+					  });
+
+	     var rectLegend2 = containerLeg.selectAll(".in")
+					   .data(dataLeg2)
+					   .enter()
+					   .append("rect")
+					   .attr("x", 70)
+					   .attr("y", function (d) {
+					       return yScale(d + 2);
+					   })
+					   .attr("width", 20)
+					   .attr("height", 20)
+					   .attr("fill", "#65156e")
+					   .attr("opacity", function (d) {
+					       return vizScale(d);
+					   })
+	     
+	     var textLegend = containerLeg.selectAll("text")
+					  .data(dataLeg)
+					  .enter()
+					  .append("text")
+					  .attr("x", 40)
+					  .attr("y", function (d) {
+					      return yScale(d + 2.5);
+					  })
+					  .text(function (d) {
+					      return String(d - 6);
+					  })
+					  .style("font-family", "sans-serif");
+
+	     var textLegend2 = containerLeg.selectAll(".in")
+					   .data(dataLeg2)
+					   .enter()
+					   .append("text")
+					   .attr("x", 100)
+					   .attr("y", function (d) {
+					       return yScale(d + 2.5);
+					   })
+					   .text(function (d) {
+					       return String(d);
+					   })
+					   .style("font-family", "sans-serif");
+
+	     var titleLegend = containerLeg.append("text")
+					   .text("Time to sunrise/sunset (hrs)")
+					   .style("font-size", "13px")
+					   .style("font-family", "sans-serif")
+					   .attr("x", 5)
+					   .attr("y", 25);
+
+	     var titleLegend2 = containerLeg.append("text")
+					    .text("Visibility distance (mi)")
+					    .style("font-size", "13px")
+					    .style("font-family", "sans-serif")
+					    .attr("x", 5)
+					    .attr("y", 45);
+
+	 });
+	 
+	 var title = d3.select("body").append("text")
+		       .text("Light Watch: Weather station data from Central Park (Sept 16, 2017 to Sept 15, 2018) with hours mapped to rectangles \n and days mapped to columns. Time to nearest sunrise or sunset is color encoded and visibility distance is encoded in rectangle opacity.")
+		       .style("font-size", "16px")
+		       .style("font-family", "sans-serif");
+
+	</script>
+    </body>
+</html>
