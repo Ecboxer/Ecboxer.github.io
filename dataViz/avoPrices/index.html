@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+	<meta charset="utf-8">
+	<title>Avocado Prices</title>
+	<script src="https://d3js.org/d3.v5.min.js" charset="utf-8"></script>
+	<style>
+	 p {
+	     font-family: sans-serif;
+	 }
+	 .yaxis {
+	     font-family: sans-serif;
+	 }
+	 .xaxis {
+	     font-family: sans-serif;
+	 }
+	</style>
+    </head>
+    <body>
+	<p>Average Avocado Prices (Jan 2015 to March 2018)</p>
+	<script type="text/javascript">
+
+	 //Display specifications
+	 var margin = {top:0, right:50, bottom:50, left:120};
+	 var width = window.innerWidth - margin.left - margin.right;
+	 var height = window.innerHeight - margin.top - margin.bottom;
+
+	 d3.csv("resources/avgPrice.csv", function (d) {
+	     return { avgPriceRatio: d.avgPriceRatio,
+		      avgPriceConv: d.avgPriceConv,
+		      avgPriceOrg: d.avgPriceOrg,
+		      diff: d.difference,
+		      totConv: d.totVolConv,
+		      totOrg: d.totVolOrg,
+		      region: d.region
+	     };
+	 }).then(function (data) {
+
+	     //Scale for the length bars
+	     var xScale = d3.scaleLinear()
+			    .domain([0, d3.max(data, function (d) { return d.avgPriceOrg; })])
+			    .range([0, width]);
+
+	     //Scale for vertical position of bars
+	     var yScale = d3.scaleBand()
+			    .domain(data.map(function (d) {
+				return d.region;
+			    }))
+			    .range([0, height])
+			    .paddingInner(.2)
+			    .paddingOuter(.2);
+
+	     //Scale for height of bars, by total volume
+	     var hScale = d3.scaleLinear()
+			    .domain([0, d3.max(data, function (d) { return d.totConv; })])
+			    .range([0, 4]);
+
+	     //Price formatter
+	     var fp = d3.format("$.2f");
+
+	     //Volume formatter
+	     var fv = d3.format(",.6r")
+
+	     var container = d3.select("body")
+			       .append("svg")
+	     		       .attr("width", width + margin.left + margin.right)
+	     		       .attr("height", height + margin.top + margin.bottom)
+			       .append("g")
+			       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+	     //Conventional Prices
+	     var rectConv = container.selectAll("rect")
+				     .data(data)
+				     .enter()
+				     .append("rect")
+				     .attr("class", "bar")
+				     .attr("x", 0)
+				     .attr("y", function (d, i) {
+					 return yScale.bandwidth() / 2 + yScale(d.region) - Math.sqrt(hScale(d.totConv)) / 2;
+				     })
+				     .attr("width", function (d) {
+					 return xScale(d.avgPriceConv);
+				     })
+				     .attr("height", function (d) {
+					 return Math.sqrt(hScale(d.totConv));
+				     })
+				     .style("fill", "blue")
+				     .style("opacity", .5)
+				     .append("title")
+				     .text(function (d) {
+			 		 return d.region + "\nAverage Price Conventional: " + fp(d.avgPriceConv) + "\nAverage Volume: " + fv(d.totConv) + "\nAverage Price Organic: " + fp(d.avgPriceOrg) + "\nAverage Volume: " + fv(d.totOrg);
+				     });
+
+	     //Organic Prices
+	     var rectOrg = container.selectAll(".in")
+				    .data(data)
+				    .enter()
+				    .append("rect")
+				    .attr("class", "bar")
+				    .attr("x", 0)
+				    .attr("y", function (d, i) {
+					return yScale.bandwidth() / 2 + yScale(d.region) - Math.sqrt(hScale(d.totOrg)) / 2;
+				    })
+				    .attr("width", function (d) {
+					return xScale(d.avgPriceOrg);
+				    })
+				    .attr("height", function (d) {
+					return Math.sqrt(hScale(d.totOrg));
+				    })
+				    .style("fill", "red")
+				    .style("opacity", .5)
+				    .append("title")
+				    .text(function (d) {
+			 		return d.region + "\nAverage Price Conventional: " + fp(d.avgPriceConv) + "\nAverage Volume: " + fv(d.totConv) + "\nAverage Price Organic: " + fp(d.avgPriceOrg) + "\nAverage Volume: " + fv(d.totOrg);
+				    });
+
+	     //X axis
+	     container.append("g")
+		      .attr("class", "xaxis")
+		      .attr("transform", "translate(0," + height + ")")
+		      .call(d3.axisBottom(xScale)
+			      .tickFormat(d3.format("$.2f")));
+
+	     //Y axis
+	     container.append("g")
+		      .attr("class", "yaxis")
+		      .call(d3.axisLeft(yScale));
+
+	     //Legend
+	     var widthLeg = width / 6
+	     var heightLeg = height / 5
+
+	     var legendConv = container.append("rect")
+				       .attr("x", width - widthLeg)
+				       .attr("y", heightLeg)
+				       .attr("width", widthLeg / 4)
+				       .attr("height", heightLeg / 8)
+				       .style("fill", "blue")
+				       .style("opacity", .5)
+
+	     var legendOrg = container.append("rect")
+				      .attr("x", width - widthLeg)
+				      .attr("y", heightLeg * 1.25)
+				      .attr("width", widthLeg / 4)
+				      .attr("height", heightLeg / 8)
+				      .style("fill", "red")
+				      .style("opacity", .5);
+
+	     var keyConv = container.append("text")
+				    .attr("x", width - widthLeg * .7)
+				    .attr("y", heightLeg * 1.0975)
+				    .text("Conventional")
+				    .attr("font-size", heightLeg / 10 + "px")
+				    .attr("font-family", "sans-serif");
+
+	     var keyOrg = container.append("text")
+				   .attr("x", width - widthLeg * .7)
+				   .attr("y", heightLeg * 1.3475)
+				   .text("Organic")
+				   .attr("font-size", heightLeg / 10 + "px")
+				   .attr("font-family", "sans-serif");
+	 })
+
+	</script>
+    </body>
+</html>
