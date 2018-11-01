@@ -11,10 +11,10 @@
 	<script type="text/javascript">
 
 	 //Display specifications
-	 var margin = {top: 10, right: 10, bottom: 10, left: 10};
+	 const margin = {top: 10, right: 10, bottom: 10, left: 10};
 
 	 //Config references
-	 var chartConfig = {
+	 const chartConfig = {
 	     target: 'chart',
 	     data_url: "resources/trainSoilCodes.csv",
 	     width: 1500 - margin.left - margin.right,
@@ -23,7 +23,7 @@
 	 };
 
 	 //Loader settings
-	 var opts = {
+	 const opts = {
 	     lines: 9, // The number of lines to draw
 	     length: 9, // The length of each line
 	     width: 5, // The line thickness
@@ -34,7 +34,7 @@
 	     className: 'spinner' // The CSS class to assign to the spinner
 	 };
 
-	 var target = document.getElementById(chartConfig.target);
+	 const target = document.getElementById(chartConfig.target);
 
 	 //Callback function wrapped for loader in 'init' function
 	 function init() {
@@ -45,8 +45,9 @@
 	     //Slow the json load intentionally, so we can see it every load
 	     setTimeout(function() {
 
+		 
 		 //Load json data and trigger callback
-		 d3.json(chartConfig.data_url, function(data) {
+		 d3.csv(chartConfig.data_url, function(data) {
 
 		     //Stop spin.js loader
 		     spinner.stop();
