@@ -26,9 +26,10 @@
 
 	 //Display specs
 	 const margin = {top: 50, right: 50, bottom: 50, left: 50};
-	 const width = Math.min(window.innerWidth, 900) - margin.left - margin.right;
-	 const height = Math.min(window.innerHeight, 600) - margin.top - margin.bottom;
+	 const width = Math.min(window.innerWidth, 1200) - margin.left - margin.right;
+	 const height = Math.min(window.innerHeight, 800) - margin.top - margin.bottom;
 	 const innerPad = width / 50;
+	 const innerPad2 = width / 200;
 
 	 //Create container
 	 const container = d3.select('#chart')
@@ -178,12 +179,16 @@
 	     function getValues3 (object) {
 		 let a = [];
 		 for (let k in object) {
-		     let b = [];
-		     for (let k2 in object[k]) {
-			 b.push(object[k][k2]);
-		     };
 		     let obj = {};
-		     obj[k] = b;
+		     for (let k2 in object[k]) {
+			 let obj2 = {};
+			 let b = [];
+			 for (let k3 in object[k][k2]) {
+			     b.push(object[k][k2][k3]);
+			 };
+			 obj2[k2] = b;
+			 obj[k] = obj2;
+		     };
 		     a.push(obj);
 		 };
 		 return a;
@@ -359,6 +364,9 @@
 			 if (features[0] === 'Eye') {
 			     dataHair = getValues2(freqByFeature(keys, data));
 
+			     //Enable
+			     document.getElementById('updateSexH').disabled = false;
+			     
 			     //Redraw table
 			     let dataDraw = freqByFeature(keys, data);
 			     let dataTb = tabMass(dataDraw, 'Eye', 'Hair');
@@ -392,13 +400,13 @@
 				 let selection = container.selectAll('' + idSelector)
 							  .data(dataMerge)
 							  .attr('class', 'eye' + Eye[eyeIndex])
-							  .attr('id', 'hair' + Hair[0])
+							  .attr('id', (d, i) => 'hair' + Hair[i])
 							  .attr('width', d => x2Scale(d) - innerPad)
 							  .attr('fill', (d, i) => Object.values(hairColor)[i]);
 
 				 selection.enter().append('rect')
 					  .attr('class', 'eye' + Eye[eyeIndex])
-					  .attr('id', 'hair' + Hair[eyeIndex])
+					  .attr('id', (d, i) => 'hair' + Hair[i])
 					  .attr('x', (d, i) => x2Scale(dataMerge.slice(0, i).reduce((a, b) => a + b)))
 					  .attr('y', yPos)
 					  .attr('width', d => x2Scale(d) - innerPad)
@@ -411,6 +419,9 @@
 			 } else if (features[0] === 'Sex') {
 			     dataHair = getValues2(freqByFeature(keys, data));
 
+			     //Enable
+			     document.getElementById('updateEyeH').disabled = false;
+			     
 			     //Redraw table
 			     let dataDraw = freqByFeature(keys, data);
 			     let dataTb = tabMass(dataDraw, 'Sex', 'Hair');
@@ -435,7 +446,7 @@
 							      .attr('class', 'title')
 							      .attr('text-anchor', 'middle')
 							      .attr('x', width / 2)
-							      .attr('y', - margin.left / 2)
+							      .attr('y', - margin.top / 2)
 							      .text('Hair color');
 
 				 };//End if sexIndex === 0
@@ -459,10 +470,130 @@
 					  .attr('fill', (d, i) => Object.values(hairColor)[i])
 					  .attr('opacity', .75);
 			     };//Close for loop
-			     
+
 			 };//Close else if features[0] === 'Sex'
 			 
-		     };//Close keys.length === 2
+		     } else if (keys.length === 3) {
+
+			 //Redraw table
+			 tabulate(data, ['Hair', 'Eye', 'Sex', 'Freq']);
+			 
+			 if (features[0] === 'Eye') { //features === ['Eye', 'Sex', 'Hair']
+
+			     let dataHair = freqByFeature(keys, data);
+			     let dataIndex = getValues2(dataHair);
+
+			     for (let eyeIndex = 0; eyeIndex < dataIndex.length; eyeIndex++) {
+
+				 for (let sexIndex = 0; sexIndex < 2; sexIndex++) {
+				     let idSelector = '#sex' + Sex[sexIndex];
+				     let classSelector = '.eye' + Eye[eyeIndex];
+
+				     
+				     let dataSelector = dataHair[Eye[eyeIndex]];
+				     let dataMerge = dataSelector[Sex[sexIndex]];
+				     let dataMergeVal = Object.values(dataMerge);
+				     
+				     let xPos = d3.select('' + classSelector + idSelector).attr('x');
+				     let yPos = d3.select('' + classSelector + idSelector).attr('y');
+				     let wPos = d3.select('' + classSelector + idSelector).attr('width');
+				     let hPos = d3.select('' + classSelector + idSelector).attr('height');
+				     let x3Scale = d3.scaleLinear()
+						     .domain([0, Object.values(dataMerge).reduce((a, b) => a + b)])
+						     .range([0, wPos]);
+
+				     //Update selection
+				     let selection = container.selectAll('' + classSelector + idSelector)
+							      .data(dataMergeVal)
+							      .attr('class', 'eye' + Eye[eyeIndex] + ' sex' + Sex[sexIndex])
+							      .attr('id', 'hair' + Hair[0])
+							      .attr('width', d => Math.max(x3Scale(d) - innerPad2, 0))
+							      .attr('fill', (d, i) => Object.values(hairColor)[i]);
+
+				     //Enter selection
+				     selection.enter().append('rect')
+					      .attr('class', 'eye' + Eye[eyeIndex] + ' sex' + Sex[sexIndex])
+					      .attr('id', (d, i) => 'hair' + Hair[i])
+					      .attr('x', (d, i) => parseFloat(xPos) + parseFloat(x3Scale(dataMergeVal.slice(0, i).reduce((a, b) => a + b))))
+					      .attr('y', yPos)
+					      .attr('width', d => Math.max(x3Scale(d) - innerPad2, 0))
+					      .attr('height', hPos)
+					      .attr('fill', (d, i) => Object.values(hairColor)[i])
+					      .attr('opacity', .75);
+				     
+				     if (sexIndex === 0 && eyeIndex === 0) {
+
+					 //Title
+					 let hairTitle = container.append('text')
+								  .attr('class', 'title')
+								  .attr('text-anchor', 'middle')
+								  .attr('x', width / 2)
+								  .attr('y', height + margin.bottom / 2)
+								  .text('Hair color');
+
+				     };//End title
+				     
+				 };//End for sexIndex
+			     };//End for eyeIndex
+			 } else if (features[0] === 'Sex') {//End features[0] === 'Eye'
+			     //features === ['Sex', 'Eye', 'Hair']
+
+			     let dataHair = freqByFeature(keys, data);
+			     let dataIndex = getValues2(dataHair);
+
+			     for (let sexIndex = 0; sexIndex < dataIndex.length; sexIndex++) {
+
+				 for (let eyeIndex = 0; eyeIndex < 4; eyeIndex++) {
+				     let idSelector = '#eye' + Eye[eyeIndex];
+				     let classSelector = '.sex' + Sex[sexIndex];
+
+				     let dataSelector = dataHair[Sex[sexIndex]];
+				     let dataMerge = dataSelector[Eye[eyeIndex]];
+				     let dataMergeVal = Object.values(dataMerge);
+
+				     let xPos = d3.select('' + classSelector + idSelector).attr('x');
+				     let yPos = d3.select('' + classSelector + idSelector).attr('y');
+				     let wPos = d3.select('' + classSelector + idSelector).attr('width');
+				     let hPos = d3.select('' + classSelector + idSelector).attr('height');
+				     let x3Scale = d3.scaleLinear()
+						     .domain([0, Object.values(dataMerge).reduce((a, b) => a + b)])
+						     .range([0, wPos]);
+
+				     //Update selection
+				     let selection = container.selectAll('' + classSelector + idSelector)
+							      .data(dataMergeVal)
+							      .attr('class', 'sex' + Sex[sexIndex] + ' eye' + Eye[eyeIndex])
+							      .attr('id', 'hair' + Hair[0])
+							      .attr('width', d => Math.max(x3Scale(d) - innerPad2, 0))
+							      .attr('fill', (d, i) => Object.values(hairColor)[i]);
+
+				     //Enter selection
+				     selection.enter().append('rect')
+					      .attr('class', 'sex' + Sex[sexIndex] + ' eye' + Eye[eyeIndex])
+					      .attr('id', (d, i) => 'hair' + Hair[i])
+					      .attr('x', (d, i) => parseFloat(xPos) + parseFloat(x3Scale(dataMergeVal.slice(0, i).reduce((a, b) => a + b))))
+					      .attr('y', yPos)
+					      .attr('width', d => Math.max(x3Scale(d) - innerPad2, 0))
+					      .attr('height', hPos)
+					      .attr('fill', (d, i) => Object.values(hairColor)[i])
+					      .attr('opacity', .75);
+
+				     if (sexIndex === 0 && eyeIndex === 0) {
+
+					 //Title
+					 let hairTitle = container.append('text')
+								  .attr('class', 'title')
+								  .attr('text-anchor', 'middle')
+								  .attr('x', width / 2)
+								  .attr('y', height + margin.bottom / 2)
+								  .text('Hair color');
+
+				     };//End title
+
+				 };//End for eyeIndex
+			     };//End for sexIndex
+			 };//End feaures[0] === 'Sex'
+		     };//End keys.length === 3
 		     
 		 } else {
 		     resetArea();
@@ -551,6 +682,9 @@
 			 if (features[0] === 'Eye') {
 			     dataHair = getValues2(freqByFeature(keys, data));
 
+			     //Enable
+			     document.getElementById('updateSexV').disabled = false;
+			     
 			     //Redraw table
 			     let dataDraw = freqByFeature(keys, data);
 			     let dataTb = tabMass(dataDraw, 'Eye', 'Hair');
@@ -603,6 +737,9 @@
 			 } else if (features[0] === 'Sex') {
 			     dataHair = getValues2(freqByFeature(keys, data));
 
+			     //Enable
+			     document.getElementById('updateEyeV').disabled = false;
+			     
 			     //Redraw table
 			     let dataDraw = freqByFeature(keys, data);
 			     let dataTb = tabMass(dataDraw, 'Sex', 'Hair');
@@ -654,7 +791,129 @@
 			     
 			 };//End features[0] === 'Sex'
 			 
-		     };
+		     } else if (keys.length === 3) {
+
+			 //Redraw table
+			 tabulate(data, ['Hair', 'Eye', 'Sex', 'Freq']);
+
+			 if (features[0] === 'Eye') { //features === ['Eye', 'Sex', 'Hair']
+
+			     let dataHair = freqByFeature(keys, data);
+			     let dataIndex = getValues2(dataHair);
+
+			     for (let eyeIndex = 0; eyeIndex < dataIndex.length; eyeIndex++) {
+
+				 for (let sexIndex = 0; sexIndex < 2; sexIndex++) {
+
+				     let idSelector = '#sex' + Sex[sexIndex];
+				     let classSelector = '.eye' + Eye[eyeIndex];
+
+				     
+				     let dataSelector = dataHair[Eye[eyeIndex]];
+				     let dataMerge = dataSelector[Sex[sexIndex]];
+				     let dataMergeVal = Object.values(dataMerge);
+				     
+				     let xPos = d3.select('' + classSelector + idSelector).attr('x');
+				     let yPos = d3.select('' + classSelector + idSelector).attr('y');
+				     let wPos = d3.select('' + classSelector + idSelector).attr('width');
+				     let hPos = d3.select('' + classSelector + idSelector).attr('height');
+				     let y3Scale = d3.scaleLinear()
+						     .domain([0, Object.values(dataMerge).reduce((a, b) => a + b)])
+						     .range([0, hPos]);
+
+				     //Update selection
+				     let selection = container.selectAll('' + classSelector + idSelector)
+							      .data(dataMergeVal)
+							      .attr('class', 'eye' + Eye[eyeIndex] + ' sex' + Sex[sexIndex])
+							      .attr('id', 'hair' + Hair[0])
+							      .attr('height', d => y3Scale(d) - innerPad2)
+							      .attr('fill', (d, i) => Object.values(hairColor)[i]);
+				     //Enter selection
+				     selection.enter().append('rect')
+					      .attr('class', 'eye' + Eye[eyeIndex] + ' sex' + Sex[sexIndex])
+					      .attr('id', (d, i) => 'hair' + Hair[i])
+					      .attr('y', (d, i) => parseFloat(yPos) + parseFloat(y3Scale(dataMergeVal.slice(0, i).reduce((a, b) => a + b))))
+					      .attr('x', xPos)
+					      .attr('height', d => y3Scale(d) - innerPad2)
+					      .attr('width', wPos)
+					      .attr('fill', (d, i) => Object.values(hairColor)[i])
+					      .attr('opacity', .75);
+				     if (sexIndex === 0 && eyeIndex === 0) {
+
+					 //Title
+					 let hairTitle = container.append('text')
+								  .attr('class', 'title')
+								  .attr('transform', 'rotate(90)')
+								  .attr('text-anchor', 'middle')
+								  .attr('x', height / 2)
+								  .attr('y', -width - margin.right / 2)
+								  .text('Hair color');
+
+				     };//End title
+
+				 };//End for sexIndex
+			     };//End for eyeIndex
+			 } else if (features[0] === 'Sex') {;//End if features[0] === 'Eye'
+			     //features === ['Sex', 'Eye', 'Hair']
+
+			     let dataHair = freqByFeature(keys, data);
+			     let dataIndex = getValues2(dataHair);
+
+			     for (let sexIndex = 0; sexIndex < dataIndex.length; sexIndex++) {
+
+				 for (let eyeIndex = 0; eyeIndex < 4; eyeIndex++) {
+
+				     let idSelector = '#eye' + Eye[eyeIndex];
+				     let classSelector = '.sex' + Sex[sexIndex];
+
+				     
+				     let dataSelector = dataHair[Sex[sexIndex]];
+				     let dataMerge = dataSelector[Eye[eyeIndex]];
+				     let dataMergeVal = Object.values(dataMerge);
+				     
+				     let xPos = d3.select('' + classSelector + idSelector).attr('x');
+				     let yPos = d3.select('' + classSelector + idSelector).attr('y');
+				     let wPos = d3.select('' + classSelector + idSelector).attr('width');
+				     let hPos = d3.select('' + classSelector + idSelector).attr('height');
+				     let y3Scale = d3.scaleLinear()
+						     .domain([0, Object.values(dataMerge).reduce((a, b) => a + b)])
+						     .range([0, hPos]);
+
+				     //Update selection
+				     let selection = container.selectAll('' + classSelector + idSelector)
+							      .data(dataMergeVal)
+							      .attr('class', 'sex' + Sex[sexIndex] + ' eye' + Eye[eyeIndex])
+							      .attr('id', 'hair' + Hair[0])
+							      .attr('height', d => Math.max(y3Scale(d) - innerPad2, 0))
+							      .attr('fill', (d, i) => Object.values(hairColor)[i]);
+				     //Enter selection
+				     selection.enter().append('rect')
+					      .attr('class', 'eye' + Sex[sexIndex] + ' eye' + Eye[eyeIndex])
+					      .attr('id', (d, i) => 'hair' + Hair[i])
+					      .attr('y', (d, i) => parseFloat(yPos) + parseFloat(y3Scale(dataMergeVal.slice(0, i).reduce((a, b) => a + b))))
+					      .attr('x', xPos)
+					      .attr('height', d => Math.max(y3Scale(d) - innerPad2, 0))
+					      .attr('width', wPos)
+					      .attr('fill', (d, i) => Object.values(hairColor)[i])
+					      .attr('opacity', .75);
+				     if (sexIndex === 0 && eyeIndex === 0) {
+
+					 //Title
+					 let hairTitle = container.append('text')
+								  .attr('class', 'title')
+								  .attr('transform', 'rotate(90)')
+								  .attr('text-anchor', 'middle')
+								  .attr('x', height / 2)
+								  .attr('y', -width - margin.right / 2)
+								  .text('Hair color');
+
+				     };//End title
+
+				 };//End for sexIndex
+			     };//End for eyeIndex
+
+			 };//End if features[0] === 'Sex'
+		     };//End if keys.length === 3
 		 } else { resetArea(); };
 	     };
 	     
@@ -738,6 +997,9 @@
 			 if (features[0] === 'Hair') {
 			     dataEye = getValues2(freqByFeature(keys, data));
 
+			     //Enable
+			     document.getElementById('updateSexH').disabled = false;
+			     
 			     //Redraw table
 			     let dataDraw = freqByFeature(keys, data);
 			     let dataTb = tabMass(dataDraw, 'Hair', 'Eye');
@@ -770,7 +1032,7 @@
 				 let selection = container.selectAll('' + idSelector)
 							  .data(dataMerge)
 							  .attr('class', 'hair' + Hair[hairIndex])
-							  .attr('id', 'id' + Eye[0])
+							  .attr('id', 'eye' + Eye[0])
 							  .attr('width', d => x2Scale(d) - innerPad).attr('fill', (d, i) => Object.values(eyeColor)[i]);
 
 				 selection.enter().append('rect')
@@ -788,6 +1050,9 @@
 			 } else if (features[0] === 'Sex') {
 			     dataEye = getValues2(freqByFeature(keys, data));
 
+			     //Enable
+			     document.getElementById('updateHairH').disabled = false;
+			     
 			     //Redraw table
 			     let dataDraw = freqByFeature(keys, data);
 			     let dataTb = tabMass(dataDraw, 'Sex', 'Eye');
@@ -837,8 +1102,127 @@
 			     
 			 };//End features[0] === 'Sex'
 			 
-		     };//End keys.length === 2
-		     
+		     } else if (keys.length === 3) {;//End keys.length === 2
+
+			 //Redraw table
+			 tabulate(data, ['Hair', 'Eye', 'Sex', 'Freq']);
+			 
+			 if (features[0] === 'Hair') { //features === ['Hair', 'Sex', 'Eye']
+
+			     let dataEye = freqByFeature(keys, data);
+			     let dataIndex = getValues2(dataEye);
+
+			     for (let hairIndex = 0; hairIndex < dataIndex.length; hairIndex++) {
+
+				 for (let sexIndex = 0; sexIndex < 2; sexIndex++) {
+				     let idSelector = '#sex' + Sex[sexIndex];
+				     let classSelector = '.hair' + Hair[hairIndex];
+
+				     
+				     let dataSelector = dataEye[Hair[hairIndex]];
+				     let dataMerge = dataSelector[Sex[sexIndex]];
+				     let dataMergeVal = Object.values(dataMerge);
+				     
+				     let xPos = d3.select('' + classSelector + idSelector).attr('x');
+				     let yPos = d3.select('' + classSelector + idSelector).attr('y');
+				     let wPos = d3.select('' + classSelector + idSelector).attr('width');
+				     let hPos = d3.select('' + classSelector + idSelector).attr('height');
+				     let x3Scale = d3.scaleLinear()
+						     .domain([0, Object.values(dataMerge).reduce((a, b) => a + b)])
+						     .range([0, wPos]);
+
+				     //Update selection
+				     let selection = container.selectAll('' + classSelector + idSelector)
+							      .data(dataMergeVal)
+							      .attr('class', 'hair' + Hair[hairIndex] + ' sex' + Sex[sexIndex])
+							      .attr('id', 'eye' + Eye[0])
+							      .attr('width', d => Math.max(x3Scale(d) - innerPad2, 0))
+							      .attr('fill', (d, i) => Object.values(eyeColor)[i]);
+
+				     //Enter selection
+				     selection.enter().append('rect')
+					      .attr('class', 'hair' + Hair[hairIndex] + ' sex' + Sex[sexIndex])
+					      .attr('id', (d, i) => 'eye' + Eye[i])
+					      .attr('x', (d, i) => parseFloat(xPos) + parseFloat(x3Scale(dataMergeVal.slice(0, i).reduce((a, b) => a + b))))
+					      .attr('y', yPos)
+					      .attr('width', d => Math.max(x3Scale(d) - innerPad2, 0))
+					      .attr('height', hPos)
+					      .attr('fill', (d, i) => Object.values(eyeColor)[i])
+					      .attr('opacity', .75);
+				     
+				     if (sexIndex === 0 && hairIndex === 0) {
+
+					 //Title
+					 let eyeTitle = container.append('text')
+								 .attr('class', 'title')
+								 .attr('text-anchor', 'middle')
+								 .attr('x', width / 2)
+								 .attr('y', height + margin.bottom / 2)
+								 .text('Eye color');
+
+				     };//End title
+				     
+				 };//End for sexIndex
+			     };//End for hairIndex
+			 } else if (features[0] === 'Sex') {//End features[0] === 'hair'
+			     //features === ['Sex', 'Hair', 'Eye']
+
+			     let dataEye = freqByFeature(keys, data);
+			     let dataIndex = getValues2(dataEye);
+
+			     for (let sexIndex = 0; sexIndex < dataIndex.length; sexIndex++) {
+
+				 for (let hairIndex = 0; hairIndex < 4; hairIndex++) {
+				     let idSelector = '#hair' + Hair[hairIndex];
+				     let classSelector = '.sex' + Sex[sexIndex];
+
+				     let dataSelector = dataEye[Sex[sexIndex]];
+				     let dataMerge = dataSelector[Hair[hairIndex]];
+				     let dataMergeVal = Object.values(dataMerge);
+
+				     let xPos = d3.select('' + classSelector + idSelector).attr('x');
+				     let yPos = d3.select('' + classSelector + idSelector).attr('y');
+				     let wPos = d3.select('' + classSelector + idSelector).attr('width');
+				     let hPos = d3.select('' + classSelector + idSelector).attr('height');
+				     let x3Scale = d3.scaleLinear()
+						     .domain([0, Object.values(dataMerge).reduce((a, b) => a + b)])
+						     .range([0, wPos]);
+
+				     //Update selection
+				     let selection = container.selectAll('' + classSelector + idSelector)
+							      .data(dataMergeVal)
+							      .attr('class', 'sex' + Sex[sexIndex] + ' hair' + Hair[hairIndex])
+							      .attr('id', 'eye' + Eye[0])
+							      .attr('width', d => Math.max(x3Scale(d) - innerPad2, 0))
+							      .attr('fill', (d, i) => Object.values(eyeColor)[i]);
+
+				     //Enter selection
+				     selection.enter().append('rect')
+					      .attr('class', 'sex' + Sex[sexIndex] + ' hair' + Hair[hairIndex])
+					      .attr('id', (d, i) => 'eye' + Eye[i])
+					      .attr('x', (d, i) => parseFloat(xPos) + parseFloat(x3Scale(dataMergeVal.slice(0, i).reduce((a, b) => a + b))))
+					      .attr('y', yPos)
+					      .attr('width', d => Math.max(x3Scale(d) - innerPad2, 0))
+					      .attr('height', hPos)
+					      .attr('fill', (d, i) => Object.values(eyeColor)[i])
+					      .attr('opacity', .75);
+
+				     if (sexIndex === 0 && hairIndex === 0) {
+
+					 //Title
+					 let eyeTitle = container.append('text')
+								 .attr('class', 'title')
+								 .attr('text-anchor', 'middle')
+								 .attr('x', width / 2)
+								 .attr('y', height + margin.bottom / 2)
+								 .text('Eye color');
+
+				     };//End title
+
+				 };//End for eyeIndex
+			     };//End for sexIndex
+			 };//End feaures[0] === 'Sex'
+		     };//End if keys.length === 3
 		 } else { resetArea(); };
 	     };
 
@@ -924,6 +1308,9 @@
 			 if (features[0] === 'Hair') {
 			     dataEye = getValues2(freqByFeature(keys, data));
 
+			     //Enable
+			     document.getElementById('updateSexV').disabled = false;
+			     
 			     //Redraw table
 			     let dataDraw = freqByFeature(keys, data);
 			     let dataTb = tabMass(dataDraw, 'Hair', 'Eye');
@@ -975,6 +1362,9 @@
 			 } else if (features[0] === 'Sex') {
 			     dataEye = getValues2(freqByFeature(keys, data));
 
+			     //Enable
+			     document.getElementById('updateHairV').disabled = false;
+			     
 			     //Redraw table
 			     let dataDraw = freqByFeature(keys, data);
 			     let dataTb = tabMass(dataDraw, 'Sex', 'Eye');
@@ -1023,11 +1413,129 @@
 					  .attr('fill', (d, i) => Object.values(eyeColor)[i])
 					  .attr('opacity', .75);
 			     };//End for loop for sexIndex
-
 			 };//End features[0] === 'Sex'
+		     } else if (keys.length === 3) {;//End if keys.length === 2
 			 
-		     };//End if keys.length === 2
-		     
+			 //Redraw table
+			 tabulate(data, ['Hair', 'Eye', 'Sex', 'Freq']);
+
+			 if (features[0] === 'Hair') { //features === ['Hair', 'Sex', 'Eye']
+
+			     let dataEye = freqByFeature(keys, data);
+			     let dataIndex = getValues2(dataEye);
+
+			     for (let hairIndex = 0; hairIndex < dataIndex.length; hairIndex++) {
+
+				 for (let sexIndex = 0; sexIndex < 2; sexIndex++) {
+
+				     let idSelector = '#sex' + Sex[sexIndex];
+				     let classSelector = '.hair' + Hair[hairIndex];
+
+				     
+				     let dataSelector = dataEye[Hair[hairIndex]];
+				     let dataMerge = dataSelector[Sex[sexIndex]];
+				     let dataMergeVal = Object.values(dataMerge);
+				     
+				     let xPos = d3.select('' + classSelector + idSelector).attr('x');
+				     let yPos = d3.select('' + classSelector + idSelector).attr('y');
+				     let wPos = d3.select('' + classSelector + idSelector).attr('width');
+				     let hPos = d3.select('' + classSelector + idSelector).attr('height');
+				     let y3Scale = d3.scaleLinear()
+						     .domain([0, Object.values(dataMerge).reduce((a, b) => a + b)])
+						     .range([0, hPos]);
+
+				     //Update selection
+				     let selection = container.selectAll('' + classSelector + idSelector)
+							      .data(dataMergeVal)
+							      .attr('class', 'hair' + Hair[hairIndex] + ' sex' + Sex[sexIndex])
+							      .attr('id', 'Eye' + Eye[0])
+							      .attr('height', d => y3Scale(d) - innerPad2)
+							      .attr('fill', (d, i) => Object.values(eyeColor)[i]);
+				     //Enter selection
+				     selection.enter().append('rect')
+					      .attr('class', 'hair' + Hair[hairIndex] + ' sex' + Sex[sexIndex])
+					      .attr('id', (d, i) => 'eye' + Eye[i])
+					      .attr('y', (d, i) => parseFloat(yPos) + parseFloat(y3Scale(dataMergeVal.slice(0, i).reduce((a, b) => a + b))))
+					      .attr('x', xPos)
+					      .attr('height', d => y3Scale(d) - innerPad2)
+					      .attr('width', wPos)
+					      .attr('fill', (d, i) => Object.values(eyeColor)[i])
+					      .attr('opacity', .75);
+				     if (sexIndex === 0 && hairIndex === 0) {
+
+					 //Title
+					 let eyeTitle = container.append('text')
+								 .attr('class', 'title')
+								 .attr('transform', 'rotate(90)')
+								 .attr('text-anchor', 'middle')
+								 .attr('x', height / 2)
+								 .attr('y', -width - margin.right / 2)
+								 .text('Eye color');
+
+				     };//End title
+
+				 };//End for sexIndex
+			     };//End for hairIndex
+			 } else if (features[0] === 'Sex') {;//End if features[0] === 'Hair'
+			     //features === ['Sex', 'Hair', 'Eye']
+
+			     let dataEye = freqByFeature(keys, data);
+			     let dataIndex = getValues2(dataEye);
+
+			     for (let sexIndex = 0; sexIndex < dataIndex.length; sexIndex++) {
+
+				 for (let hairIndex = 0; hairIndex < 4; hairIndex++) {
+
+				     let idSelector = '#hair' + Hair[hairIndex];
+				     let classSelector = '.sex' + Sex[sexIndex];
+
+				     
+				     let dataSelector = dataEye[Sex[sexIndex]];
+				     let dataMerge = dataSelector[Hair[hairIndex]];
+				     let dataMergeVal = Object.values(dataMerge);
+				     
+				     let xPos = d3.select('' + classSelector + idSelector).attr('x');
+				     let yPos = d3.select('' + classSelector + idSelector).attr('y');
+				     let wPos = d3.select('' + classSelector + idSelector).attr('width');
+				     let hPos = d3.select('' + classSelector + idSelector).attr('height');
+				     let y3Scale = d3.scaleLinear()
+						     .domain([0, Object.values(dataMerge).reduce((a, b) => a + b)])
+						     .range([0, hPos]);
+
+				     //Update selection
+				     let selection = container.selectAll('' + classSelector + idSelector)
+							      .data(dataMergeVal)
+							      .attr('class', 'sex' + Sex[sexIndex] + ' hair' + Hair[hairIndex])
+							      .attr('id', 'eye' + Eye[0])
+							      .attr('height', d => Math.max(y3Scale(d) - innerPad2, 0))
+							      .attr('fill', (d, i) => Object.values(eyeColor)[i]);
+				     //Enter selection
+				     selection.enter().append('rect')
+					      .attr('class', 'sex' + Sex[sexIndex] + ' hair' + Hair[hairIndex])
+					      .attr('id', (d, i) => 'eye' + Eye[i])
+					      .attr('y', (d, i) => parseFloat(yPos) + parseFloat(y3Scale(dataMergeVal.slice(0, i).reduce((a, b) => a + b))))
+					      .attr('x', xPos)
+					      .attr('height', d => Math.max(y3Scale(d) - innerPad2, 0))
+					      .attr('width', wPos)
+					      .attr('fill', (d, i) => Object.values(eyeColor)[i])
+					      .attr('opacity', .75);
+				     if (sexIndex === 0 && hairIndex === 0) {
+
+					 //Title
+					 let eyeTitle = container.append('text')
+								 .attr('class', 'title')
+								 .attr('transform', 'rotate(90)')
+								 .attr('text-anchor', 'middle')
+								 .attr('x', height / 2)
+								 .attr('y', -width - margin.right / 2)
+								 .text('Eye color');
+
+				     };//End title
+
+				 };//End for sexIndex
+			     };//End for hairIndex
+			 };//End if features[0] === 'Sex'
+		     };//End if keys.length === 3
 		 } else { resetArea(); };
 	     };
 
@@ -1110,6 +1618,9 @@
 			 if (features[0] === 'Hair') {
 			     dataSex = getValues2(freqByFeature(keys, data));
 
+			     //Enable
+			     document.getElementById('updateEyeH').disabled = false;
+			     
 			     //Redraw table
 			     let dataDraw = freqByFeature(keys, data);
 			     let dataTb = tabMass(dataDraw, 'Hair', 'Sex');
@@ -1142,7 +1653,7 @@
 				 let selection = container.selectAll('' + idSelector)
 							  .data(dataMerge)
 							  .attr('class', 'hair' + Hair[hairIndex])
-							  .attr('id', 'id' + Sex[0])
+							  .attr('id', 'sex' + Sex[0])
 							  .attr('width', d => x2Scale(d) - innerPad)
 							  .attr('fill', (d, i) => Object.values(sexColor)[i]);
 
@@ -1161,6 +1672,9 @@
 			 } else if (features[0] === 'Eye') {
 			     dataSex = getValues2(freqByFeature(keys, data));
 
+			     //Enable
+			     document.getElementById('updateHairH').disabled = false;
+			     
 			     //Redraw table
 			     let dataDraw = freqByFeature(keys, data);
 			     let dataTb = tabMass(dataDraw, 'Eye', 'Sex');
@@ -1210,8 +1724,131 @@
 			     
 			 };//End features[0] === 'Eye'
 			 
-		     };//End keys.length === 2
-		     
+		     } else if (keys.length === 3) {;//End keys.length === 2
+			 //Redraw table
+			 tabulate(data, ['Hair', 'Eye', 'Sex', 'Freq']);
+			 
+			 if (features[0] === 'Hair') { //features === ['Hair', 'Eye', 'Sex']
+
+			     let dataSex = freqByFeature(keys, data);
+			     let dataIndex = getValues2(dataSex);
+
+			     for (let hairIndex = 0; hairIndex < dataIndex.length; hairIndex++) {
+
+				 for (let eyeIndex = 0; eyeIndex < 4; eyeIndex++) {
+				     let idSelector = '#eye' + Eye[eyeIndex];
+				     let classSelector = '.hair' + Hair[hairIndex];
+
+				     
+				     let dataSelector = dataSex[Hair[hairIndex]];
+				     let dataMerge = dataSelector[Eye[eyeIndex]];
+				     let dataMergeVal = Object.values(dataMerge);
+				     
+				     let xPos = d3.select('' + classSelector + idSelector).attr('x');
+				     let yPos = d3.select('' + classSelector + idSelector).attr('y');
+				     let wPos = d3.select('' + classSelector + idSelector).attr('width');
+				     let hPos = d3.select('' + classSelector + idSelector).attr('height');
+				     let x3Scale = d3.scaleLinear()
+						     .domain([0, Object.values(dataMerge).reduce((a, b) => a + b)])
+						     .range([0, wPos]);
+
+				     //Update selection
+				     let selection = container.selectAll('' + classSelector + idSelector)
+							      .data(dataMergeVal)
+							      .attr('class', 'hair' + Hair[hairIndex] + ' eye' + Eye[eyeIndex])
+							      .attr('id', 'sex' + Sex[0])
+							      .attr('width', d => Math.max(x3Scale(d) - innerPad2, 0))
+							      .attr('fill', (d, i) => Object.values(sexColor)[i]);
+
+				     //Enter selection
+				     selection.enter().append('rect')
+					      .attr('class', 'hair' + Hair[hairIndex] + ' eye' + Eye[eyeIndex])
+					      .attr('id', (d, i) => 'sex' + Sex[i])
+					      .attr('x', (d, i) => parseFloat(xPos) + parseFloat(x3Scale(dataMergeVal.slice(0, i).reduce((a, b) => a + b))))
+					      .attr('y', yPos)
+					      .attr('width', d => Math.max(x3Scale(d) - innerPad2, 0))
+					      .attr('height', hPos)
+					      .attr('fill', (d, i) => Object.values(sexColor)[i])
+					      .attr('opacity', .75);
+				     
+				     if (eyeIndex === 0 && hairIndex === 0) {
+
+					 //Title
+					 let sexTitle = container.append('text')
+								 .attr('class', 'title')
+								 .attr('text-anchor', 'middle')
+								 .attr('x', width / 2)
+								 .attr('y', height + margin.bottom / 2)
+								 .text('Sex');
+
+				     };//End title
+				 };//End for eyeIndex
+			     };//End for hairIndex
+			 } else if (features[0] === 'Eye') {//End features[0] === 'hair'
+			     //features === ['Eye', 'Hair', 'Sex']
+
+			     let dataSex = freqByFeature(keys, data);
+			     let dataIndex = getValues2(dataSex);
+			     console.log(dataSex);
+			     console.log(dataIndex);
+
+			     for (let eyeIndex = 0; eyeIndex < 4; eyeIndex++) {
+
+				 for (let hairIndex = 0; hairIndex < 4; hairIndex++) {
+				     
+				     let idSelector = '#hair' + Hair[hairIndex];
+				     let classSelector = '.eye' + Eye[eyeIndex];
+				     console.log(idSelector);
+				     console.log(classSelector);
+				     let dataSelector = dataSex[Eye[eyeIndex]];
+				     let dataMerge = dataSelector[Hair[hairIndex]];
+				     let dataMergeVal = Object.values(dataMerge);
+				     console.log(dataMergeVal);
+
+				     let xPos = d3.select('' + classSelector + idSelector).attr('x');
+				     let yPos = d3.select('' + classSelector + idSelector).attr('y');
+				     let wPos = d3.select('' + classSelector + idSelector).attr('width');
+				     let hPos = d3.select('' + classSelector + idSelector).attr('height');
+				     let x3Scale = d3.scaleLinear()
+						     .domain([0, Object.values(dataMerge).reduce((a, b) => a + b)])
+						     .range([0, wPos]);
+
+				     //Update selection
+				     let selection = container.selectAll('' + classSelector + idSelector)
+							      .data(dataMergeVal)
+							      .attr('class', 'eye' + Eye[eyeIndex] + ' hair' + Hair[hairIndex])
+							      .attr('id', (d, i) => 'sex' + Sex[i])
+							      .attr('width', d => Math.max(x3Scale(d) - innerPad2, 0))
+							      .attr('fill', (d, i) => Object.values(sexColor)[i]);
+
+				     //Enter selection
+				     selection.enter().append('rect')
+					      .attr('class', 'eye' + Eye[eyeIndex] + ' hair' + Hair[hairIndex])
+					      .attr('id', (d, i) => 'sex' + Sex[i])
+					      .attr('x', (d, i) => parseFloat(xPos) + parseFloat(x3Scale(dataMergeVal.slice(0, i).reduce((a, b) => a + b))))
+					      .attr('y', yPos)
+					      .attr('width', d => Math.max(x3Scale(d) - innerPad2, 0))
+					      .attr('height', hPos)
+					      .attr('fill', (d, i) => Object.values(sexColor)[i])
+					      .attr('opacity', .75);
+
+				     if (eyeIndex === 0 && hairIndex === 0) {
+
+					 //Title
+					 let sexTitle = container.append('text')
+								 .attr('class', 'title')
+								 .attr('text-anchor', 'middle')
+								 .attr('x', width / 2)
+								 .attr('y', height + margin.bottom / 2)
+								 .text('Sex');
+
+				     };//End title
+
+				 };//End for hairIndex
+			     };//End for eyeIndex
+			 };//End feaures[0] === 'Eye'
+
+		     };//End if keys.length === 3
 		 } else { resetArea(); };
 	     };
 
@@ -1297,6 +1934,9 @@
 			 if (features[0] === 'Hair') {
 			     dataSex = getValues2(freqByFeature(keys, data));
 
+			     //Enable
+			     document.getElementById('updateEyeV').disabled = false;
+			     
 			     //Redraw table
 			     let dataDraw = freqByFeature(keys, data);
 			     let dataTb = tabMass(dataDraw, 'Hair', 'Sex');
@@ -1348,6 +1988,9 @@
 			 } else if (features[0] === 'Eye') {
 			     dataSex = getValues2(freqByFeature(keys, data));
 
+			     //Enable
+			     document.getElementById('updateHairV').disabled = false;
+			     
 			     //Redraw table
 			     let dataDraw = freqByFeature(keys, data);
 			     let dataTb = tabMass(dataDraw, 'Eye', 'Sex');
@@ -1399,8 +2042,129 @@
 			     
 			 };//End features[0] = 'Eye'
 			 
-		     };//End keys.length === 2
-		     
+		     } else if (keys.length === 3) {//End if keys.length === 2
+			 
+			 //Redraw table
+			 tabulate(data, ['Hair', 'Eye', 'Sex', 'Freq']);
+
+			 if (features[0] === 'Hair') { //features === ['Hair', 'Eye', 'Sex']
+
+			     let dataSex = freqByFeature(keys, data);
+			     let dataIndex = getValues2(dataSex);
+
+			     for (let hairIndex = 0; hairIndex < dataIndex.length; hairIndex++) {
+
+				 for (let eyeIndex = 0; eyeIndex < 4; eyeIndex++) {
+
+				     let idSelector = '#eye' + Eye[eyeIndex];
+				     let classSelector = '.hair' + Hair[hairIndex];
+
+				     
+				     let dataSelector = dataSex[Hair[hairIndex]];
+				     let dataMerge = dataSelector[Eye[eyeIndex]];
+				     let dataMergeVal = Object.values(dataMerge);
+				     
+				     let xPos = d3.select('' + classSelector + idSelector).attr('x');
+				     let yPos = d3.select('' + classSelector + idSelector).attr('y');
+				     let wPos = d3.select('' + classSelector + idSelector).attr('width');
+				     let hPos = d3.select('' + classSelector + idSelector).attr('height');
+				     let y3Scale = d3.scaleLinear()
+						     .domain([0, Object.values(dataMerge).reduce((a, b) => a + b)])
+						     .range([0, hPos]);
+
+				     //Update selection
+				     let selection = container.selectAll('' + classSelector + idSelector)
+							      .data(dataMergeVal)
+							      .attr('class', 'hair' + Hair[hairIndex] + ' eye' + Eye[eyeIndex])
+							      .attr('id', 'sex' + Sex[0])
+							      .attr('height', d => y3Scale(d) - innerPad2)
+							      .attr('fill', (d, i) => Object.values(sexColor)[i]);
+				     //Enter selection
+				     selection.enter().append('rect')
+					      .attr('class', 'hair' + Hair[hairIndex] + ' eye' + Eye[eyeIndex])
+					      .attr('id', (d, i) => 'sex' + Sex[i])
+					      .attr('y', (d, i) => parseFloat(yPos) + parseFloat(y3Scale(dataMergeVal.slice(0, i).reduce((a, b) => a + b))))
+					      .attr('x', xPos)
+					      .attr('height', d => y3Scale(d) - innerPad2)
+					      .attr('width', wPos)
+					      .attr('fill', (d, i) => Object.values(sexColor)[i])
+					      .attr('opacity', .75);
+				     
+				     if (eyeIndex === 0 && hairIndex === 0) {
+
+					 //Title
+					 let sexTitle = container.append('text')
+								 .attr('class', 'title')
+								 .attr('transform', 'rotate(90)')
+								 .attr('text-anchor', 'middle')
+								 .attr('x', height / 2)
+								 .attr('y', -width - margin.right / 2)
+								 .text('Sex');
+
+				     };//End title
+
+				 };//End for eyeIndex
+			     };//End for hairIndex
+			 } else if (features[0] === 'Eye') {;//End if features[0] === 'Hair'
+			     //features === ['Eye', 'Hair', 'Sex']
+
+			     let dataSex = freqByFeature(keys, data);
+			     let dataIndex = getValues2(dataSex);
+
+			     for (let eyeIndex = 0; eyeIndex < dataIndex.length; eyeIndex++) {
+
+				 for (let hairIndex = 0; hairIndex < 4; hairIndex++) {
+
+				     let idSelector = '#hair' + Hair[hairIndex];
+				     let classSelector = '.eye' + Eye[eyeIndex];
+
+				     
+				     let dataSelector = dataSex[Eye[eyeIndex]];
+				     let dataMerge = dataSelector[Hair[hairIndex]];
+				     let dataMergeVal = Object.values(dataMerge);
+				     
+				     let xPos = d3.select('' + classSelector + idSelector).attr('x');
+				     let yPos = d3.select('' + classSelector + idSelector).attr('y');
+				     let wPos = d3.select('' + classSelector + idSelector).attr('width');
+				     let hPos = d3.select('' + classSelector + idSelector).attr('height');
+				     let y3Scale = d3.scaleLinear()
+						     .domain([0, Object.values(dataMerge).reduce((a, b) => a + b)])
+						     .range([0, hPos]);
+
+				     //Update selection
+				     let selection = container.selectAll('' + classSelector + idSelector)
+							      .data(dataMergeVal)
+							      .attr('class', 'eye' + Eye[eyeIndex] + ' hair' + Hair[hairIndex])
+							      .attr('id', 'sex' + Sex[0])
+							      .attr('height', d => Math.max(y3Scale(d) - innerPad2, 0))
+							      .attr('fill', (d, i) => Object.values(sexColor)[i]);
+				     //Enter selection
+				     selection.enter().append('rect')
+					      .attr('class', 'eye' + Eye[eyeIndex] + ' hair' + Hair[hairIndex])
+					      .attr('id', (d, i) => 'sex' + Sex[i])
+					      .attr('y', (d, i) => parseFloat(yPos) + parseFloat(y3Scale(dataMergeVal.slice(0, i).reduce((a, b) => a + b))))
+					      .attr('x', xPos)
+					      .attr('height', d => Math.max(y3Scale(d) - innerPad2, 0))
+					      .attr('width', wPos)
+					      .attr('fill', (d, i) => Object.values(sexColor)[i])
+					      .attr('opacity', .75);
+				     if (eyeIndex === 0 && hairIndex === 0) {
+
+					 //Title
+					 let sexTitle = container.append('text')
+								 .attr('class', 'title')
+								 .attr('transform', 'rotate(90)')
+								 .attr('text-anchor', 'middle')
+								 .attr('x', height / 2)
+								 .attr('y', -width - margin.right / 2)
+								 .text('Sex');
+
+				     };//End title
+
+				 };//End for eyeIndex
+			     };//End for hairIndex
+			 };//End if features[0] === 'eye'
+		     };//End if keys.length === 3
 		 } else { resetArea(); };
 	     };
 
