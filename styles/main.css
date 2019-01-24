@@ -37,10 +37,10 @@ li a:hover {
     color: white;
 }
 a:link {
-    color: black;
+    color: #048;
     text-decoration: none;
 }
 a:visited {
-    color: #004;
+    color: #048;
     text-decoration: none;
 }
