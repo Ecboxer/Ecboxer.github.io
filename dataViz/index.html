@@ -6,12 +6,22 @@
 	<title>Data Visualizations</title>
 	<script type="text/javascript" src="https://d3js.org/d3.v5.min.js"></script>
 	<style>
-	    img {
-	    border: 1px solid #ddd;
-	    border-radius: 4px;
-	    padding: 5px;
-	    width: 150px;
-	    }
+	 img {
+	     border: 1px solid #ddd;
+	     border-radius: 4px;
+	     padding: 5px;
+	     width: 150px;
+	 }
+	 .gallery {
+	     position: relative;
+	 }
+	 .blocks {
+	     position: relative;
+	     left: 10px;
+	 }
+	 .sub {
+	     text-indent: 1%;
+	 }
 	</style>
     </head>
     <body>
@@ -21,8 +31,20 @@
 	    <li><a href="../eda/">Projects</a></li>
 	    <li><a href="../about/">About</a></li>
 	</ul>
-	<br>
-	<div>
+
+	<div class="blocks">
+	    <p>
+		<a href="https://bl.ocks.org/ecboxer">My Blocks</a>
+	    </p>
+	    <p class="sub">
+		<a href="https://bl.ocks.org/ecboxer/6be5cf6fc44449823e08ca5f1b443935">Daily Departure Delays for Flights from New York</a> Calendar-style heatmap of daily flight departure delays, using a Variable Suppressing Uncertainty Palette (VSUP).
+	    </p>
+	    <p class="sub">
+		<a href="https://bl.ocks.org/ecboxer/221d818a4b9fad4feb0ab14e7ca704a1">Weekly Departure Delays for Flights from New York</a> Heatmap of weeekly flight departure delays, using a VSUP.
+	    </p>
+	</div>
+	
+	<div class="gallery">
 	    <a href="travelSurvey/">
 		<img src="../images/travelThumbnail.png" alt="Travel Survey" title="Travel Survey Visualization">
 	    </a>
