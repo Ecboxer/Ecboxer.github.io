@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+	<link rel="stylesheet" type="text/css" href="../../styles/main.css">
+	<meta charset="utf-8">
+	<title>Inkrement</title>
+	<style>
+	 .moved {
+	     transform: translate(9px, 0px);
+	 }
+	 img {
+	     border: 1px solid #ddd;
+	     border-radius: 4px;
+	     padding: 5px;
+	     width: 150px;
+	 }
+	 .gallery {
+	     position: relative;
+	 }
+	 .blocks {
+	     position: relative;
+	     left: 10px;
+	 }
+	 .sub {
+	     text-indent: 1%;
+	 }
+	</style>
+    </head>
+    <body>
+	<ul>
+	    <li><a href="../../">Home</a></li>
+	    <li><a href="../../dataViz/">Visualizations</a></li>
+	    <li><a href="../../eda/">Projects</a></li>
+	    <li><a href="../../about/">About</a></li>
+	</ul>
+	<div class ="moved">
+	    <p><a href="https://github.com/Ecboxer/inkrement">Inkrement</a>
+		<br>
+		<text>  Functions for incremental data visualization in Python.</text></p>
+	    <p>Availabel through <a href="https://pypi.org/project/inkrement/">PyPI</a> , just <code>pip install inkrement</code> and take it for a spin!</p>
+	</div>
+
+	<div class="gallery">
+	    <p>inkrement.plot_lag<p>
+		<script src="https://gist.github.com/Ecboxer/24610f18e9d3489b3e7695981c84bd0e.js"></script>
+		<img src="../../images/plot_lag.png" style="width:800px;" alt="plot_lag" title="Inkrement plot_lag">
+		<br>
+		<p>inkrement.inc_hist_cdf</p>
+		<script src="https://gist.github.com/Ecboxer/8dc5c10de843f08e99bc4543077468f8.js"></script>
+		<img src="../../images/inc_hist_cdf.png" style="width:800px;" alt="inc_hist_cdf" title="Inkrement inc_hist_cdf">
+	</div>
+    </body>
+</html>
