@@ -3,14 +3,14 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-06-15 Wed 20:54 -->
+<!-- 2023-02-22 Wed 21:47 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
-<meta name="author" content="eric" />
-<meta name="generator" content="Org Mode" />
-<style>
-  #content { max-width: 60em; margin: auto; }
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Eric" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
              margin-bottom: .2em; }
   .subtitle { text-align: center;
@@ -31,9 +31,8 @@
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
   pre {
-    border: 1px solid #e6e6e6;
-    border-radius: 3px;
-    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
     padding: 8pt;
     font-family: monospace;
     overflow: auto;
@@ -41,22 +40,22 @@
   }
   pre.src {
     position: relative;
-    overflow: auto;
+    overflow: visible;
+    padding-top: 1.2em;
   }
   pre.src:before {
     display: none;
     position: absolute;
-    top: -8px;
-    right: 12px;
+    background-color: white;
+    top: -10px;
+    right: 10px;
     padding: 3px;
-    color: #555;
-    background-color: #f2f2f299;
+    border: 1px solid black;
   }
-  pre.src:hover:before { display: inline; margin-top: 14px;}
+  pre.src:hover:before { display: inline;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
-  pre.src-authinfo::before { content: 'Authinfo'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -192,75 +191,127 @@
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { width: 90%; }
+  /*]]>*/-->
 </style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
 </head>
 <body>
-<div id="content" class="content">
-<div id="table-of-contents" role="doc-toc">
+<div id="content">
+<div id="table-of-contents">
 <h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
+<div id="text-table-of-contents">
 <ul>
-<li><a href="#org729e0ef">1. Bear-related</a>
+<li><a href="#orgb0caa4c">1. Bear-related</a>
 <ul>
-<li><a href="#org06f08fe">1.1. Feeding honey to a bear</a></li>
-<li><a href="#orgbc00344">1.2. Bear hair</a></li>
-<li><a href="#org09febe3">1.3. Ro-bear Gerard</a></li>
+<li><a href="#orgb04463b">1.1. Feeding honey to a bear</a></li>
+<li><a href="#org8decb98">1.2. Bear hair</a></li>
+<li><a href="#org928b4c8">1.3. Ro-bear Gerard</a></li>
 </ul>
 </li>
-<li><a href="#org666f2db">2. Cow/fairy-related</a>
+<li><a href="#orgfb121d2">2. Cow/fairy-related</a>
 <ul>
-<li><a href="#org107841a">2.1. Canary in a cow-mine</a></li>
+<li><a href="#org777eee9">2.1. Canary in a cow-mine</a></li>
 </ul>
 </li>
-<li><a href="#orga308d73">3. Ferret/flamingo-related</a>
+<li><a href="#org7a2f24e">3. Family/telemarketing-related</a>
 <ul>
-<li><a href="#org31cc66e">3.1. Furry Furrowers</a></li>
+<li><a href="#orgf9603ad">3.1. I don't like talking on the phone</a></li>
 </ul>
 </li>
-<li><a href="#org593a14c">4. Horse-related</a>
+<li><a href="#orgb004047">4. Ferret/flamingo-related</a>
 <ul>
-<li><a href="#org0de4e4f">4.1. Yum</a></li>
+<li><a href="#org96466be">4.1. Furry Furrowers</a></li>
 </ul>
 </li>
-<li><a href="#orga4f73e1">5. Love poems</a>
+<li><a href="#org8479373">5. Horse-related</a>
 <ul>
-<li><a href="#org73f984f">5.1. Blinded</a></li>
+<li><a href="#orgff54939">5.1. Yum</a></li>
 </ul>
 </li>
-<li><a href="#org174f914">6. Plumbing poems</a>
+<li><a href="#orgd8e7ba7">6. Love poems</a>
 <ul>
-<li><a href="#org71043ce">6.1. Clogged</a></li>
+<li><a href="#orgd45c288">6.1. Blinded</a></li>
 </ul>
 </li>
-<li><a href="#orgfc6438d">7. Poe-tree</a>
+<li><a href="#org5acffc6">7. Plumbing poems</a>
 <ul>
-<li><a href="#orgfb62006">7.1. Huh</a></li>
+<li><a href="#org2999f16">7.1. Clogged</a></li>
 </ul>
 </li>
-<li><a href="#org70f5374">8. Spooky</a>
+<li><a href="#org72361f2">8. Poe-tree</a>
 <ul>
-<li><a href="#orga0be02f">8.1. Haunted Jaunt</a></li>
+<li><a href="#orgc6aa380">8.1. Huh</a></li>
 </ul>
 </li>
-<li><a href="#orgf13c893">9. Sweet</a>
+<li><a href="#orgfac0472">9. Spooky</a>
 <ul>
-<li><a href="#org34fa295">9.1. Yum</a></li>
+<li><a href="#org08bafb3">9.1. Haunted Jaunt</a></li>
 </ul>
 </li>
-<li><a href="#orgb3a6807">10. Train/star-related</a>
+<li><a href="#org447552a">10. Sweet</a>
 <ul>
-<li><a href="#org63d7e2f">10.1. Going Home</a></li>
+<li><a href="#orgafa279e">10.1. Yum</a></li>
+</ul>
+</li>
+<li><a href="#orgc99a9b4">11. Train/star-related</a>
+<ul>
+<li><a href="#org79e637f">11.1. Going Home</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org729e0ef" class="outline-2">
-<h2 id="org729e0ef"><span class="section-number-2">1.</span> Bear-related</h2>
+<div id="outline-container-orgb0caa4c" class="outline-2">
+<h2 id="orgb0caa4c"><span class="section-number-2">1</span> Bear-related</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org06f08fe" class="outline-3">
-<h3 id="org06f08fe"><span class="section-number-3">1.1.</span> Feeding honey to a bear</h3>
+<div id="outline-container-orgb04463b" class="outline-3">
+<h3 id="orgb04463b"><span class="section-number-3">1.1</span> Feeding honey to a bear</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 While feeding honey to a bear,
@@ -284,8 +335,8 @@ Would Carl take my pocket eclair?
 </div>
 </div>
 
-<div id="outline-container-orgbc00344" class="outline-3">
-<h3 id="orgbc00344"><span class="section-number-3">1.2.</span> Bear hair</h3>
+<div id="outline-container-org8decb98" class="outline-3">
+<h3 id="org8decb98"><span class="section-number-3">1.2</span> Bear hair</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 Stab the bear! Stab the bear!
@@ -309,8 +360,8 @@ To the clothes we can wear.
 </div>
 </div>
 
-<div id="outline-container-org09febe3" class="outline-3">
-<h3 id="org09febe3"><span class="section-number-3">1.3.</span> Ro-bear Gerard</h3>
+<div id="outline-container-org928b4c8" class="outline-3">
+<h3 id="org928b4c8"><span class="section-number-3">1.3</span> Ro-bear Gerard</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 The robot bear punches the ground.
@@ -334,12 +385,12 @@ Just a dangerous, cuddly mound.
 </div>
 </div>
 </div>
-<div id="outline-container-org666f2db" class="outline-2">
-<h2 id="org666f2db"><span class="section-number-2">2.</span> Cow/fairy-related</h2>
+<div id="outline-container-orgfb121d2" class="outline-2">
+<h2 id="orgfb121d2"><span class="section-number-2">2</span> Cow/fairy-related</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org107841a" class="outline-3">
-<h3 id="org107841a"><span class="section-number-3">2.1.</span> Canary in a cow-mine</h3>
+<div id="outline-container-org777eee9" class="outline-3">
+<h3 id="org777eee9"><span class="section-number-3">2.1</span> Canary in a cow-mine</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 Fearing from fourteen fierce fairies,
@@ -364,13 +415,74 @@ Heffers' helper made things hairy.
 </div>
 </div>
 
-<div id="outline-container-orga308d73" class="outline-2">
-<h2 id="orga308d73"><span class="section-number-2">3.</span> Ferret/flamingo-related</h2>
+<div id="outline-container-org7a2f24e" class="outline-2">
+<h2 id="org7a2f24e"><span class="section-number-2">3</span> Family/telemarketing-related</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org31cc66e" class="outline-3">
-<h3 id="org31cc66e"><span class="section-number-3">3.1.</span> Furry Furrowers</h3>
+<div id="outline-container-orgf9603ad" class="outline-3">
+<h3 id="orgf9603ad"><span class="section-number-3">3.1</span> I don't like talking on the phone</h3>
 <div class="outline-text-3" id="text-3-1">
+<p>
+I had a fifteen minute phone
+</p>
+
+<p>
+conversation with my dad tonight.
+</p>
+
+<p>
+Then a twenty minute call which
+</p>
+
+<p>
+turned out to be asking me to give
+</p>
+
+<p>
+money to my grad program. I
+</p>
+
+<p>
+left both calls feeling equal amounts
+</p>
+
+<p>
+of icky weirdness. In one, I
+</p>
+
+<p>
+felt bad for not giving more time
+</p>
+
+<p>
+to this man who I should feel close
+</p>
+
+<p>
+to. In the other, I felt bad for
+</p>
+
+<p>
+being too eager to talk to
+</p>
+
+<p>
+a complete stranger, who showed a small
+</p>
+
+<p>
+amount of interest in my life.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb004047" class="outline-2">
+<h2 id="orgb004047"><span class="section-number-2">4</span> Ferret/flamingo-related</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-org96466be" class="outline-3">
+<h3 id="org96466be"><span class="section-number-3">4.1</span> Furry Furrowers</h3>
+<div class="outline-text-3" id="text-4-1">
 <p>
 Fearful of four fighting flamingoes,
 </p>
@@ -394,13 +506,13 @@ Fellow ferrets face their final foes.
 </div>
 </div>
 
-<div id="outline-container-org593a14c" class="outline-2">
-<h2 id="org593a14c"><span class="section-number-2">4.</span> Horse-related</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-org8479373" class="outline-2">
+<h2 id="org8479373"><span class="section-number-2">5</span> Horse-related</h2>
+<div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-org0de4e4f" class="outline-3">
-<h3 id="org0de4e4f"><span class="section-number-3">4.1.</span> Yum</h3>
-<div class="outline-text-3" id="text-4-1">
+<div id="outline-container-orgff54939" class="outline-3">
+<h3 id="orgff54939"><span class="section-number-3">5.1</span> Yum</h3>
+<div class="outline-text-3" id="text-5-1">
 <p>
 Faced with no recourse
 </p>
@@ -423,13 +535,13 @@ I've stolen its force.
 </div>
 </div>
 </div>
-<div id="outline-container-orga4f73e1" class="outline-2">
-<h2 id="orga4f73e1"><span class="section-number-2">5.</span> Love poems</h2>
-<div class="outline-text-2" id="text-5">
+<div id="outline-container-orgd8e7ba7" class="outline-2">
+<h2 id="orgd8e7ba7"><span class="section-number-2">6</span> Love poems</h2>
+<div class="outline-text-2" id="text-6">
 </div>
-<div id="outline-container-org73f984f" class="outline-3">
-<h3 id="org73f984f"><span class="section-number-3">5.1.</span> Blinded</h3>
-<div class="outline-text-3" id="text-5-1">
+<div id="outline-container-orgd45c288" class="outline-3">
+<h3 id="orgd45c288"><span class="section-number-3">6.1</span> Blinded</h3>
+<div class="outline-text-3" id="text-6-1">
 <p>
 Yesterday you stole my vision,
 </p>
@@ -452,13 +564,13 @@ In love with nuclear fission.
 </div>
 </div>
 </div>
-<div id="outline-container-org174f914" class="outline-2">
-<h2 id="org174f914"><span class="section-number-2">6.</span> Plumbing poems</h2>
-<div class="outline-text-2" id="text-6">
+<div id="outline-container-org5acffc6" class="outline-2">
+<h2 id="org5acffc6"><span class="section-number-2">7</span> Plumbing poems</h2>
+<div class="outline-text-2" id="text-7">
 </div>
-<div id="outline-container-org71043ce" class="outline-3">
-<h3 id="org71043ce"><span class="section-number-3">6.1.</span> Clogged</h3>
-<div class="outline-text-3" id="text-6-1">
+<div id="outline-container-org2999f16" class="outline-3">
+<h3 id="org2999f16"><span class="section-number-3">7.1</span> Clogged</h3>
+<div class="outline-text-3" id="text-7-1">
 <p>
 My sink is clogged
 </p>
@@ -477,13 +589,13 @@ Onto the log,
 </div>
 </div>
 </div>
-<div id="outline-container-orgfc6438d" class="outline-2">
-<h2 id="orgfc6438d"><span class="section-number-2">7.</span> Poe-tree</h2>
-<div class="outline-text-2" id="text-7">
+<div id="outline-container-org72361f2" class="outline-2">
+<h2 id="org72361f2"><span class="section-number-2">8</span> Poe-tree</h2>
+<div class="outline-text-2" id="text-8">
 </div>
-<div id="outline-container-orgfb62006" class="outline-3">
-<h3 id="orgfb62006"><span class="section-number-3">7.1.</span> Huh</h3>
-<div class="outline-text-3" id="text-7-1">
+<div id="outline-container-orgc6aa380" class="outline-3">
+<h3 id="orgc6aa380"><span class="section-number-3">8.1</span> Huh</h3>
+<div class="outline-text-3" id="text-8-1">
 <p>
 A tree made full with flowers
 </p>
@@ -506,13 +618,13 @@ Maybe one of those tree showers?
 </div>
 </div>
 </div>
-<div id="outline-container-org70f5374" class="outline-2">
-<h2 id="org70f5374"><span class="section-number-2">8.</span> Spooky</h2>
-<div class="outline-text-2" id="text-8">
+<div id="outline-container-orgfac0472" class="outline-2">
+<h2 id="orgfac0472"><span class="section-number-2">9</span> Spooky</h2>
+<div class="outline-text-2" id="text-9">
 </div>
-<div id="outline-container-orga0be02f" class="outline-3">
-<h3 id="orga0be02f"><span class="section-number-3">8.1.</span> Haunted Jaunt</h3>
-<div class="outline-text-3" id="text-8-1">
+<div id="outline-container-org08bafb3" class="outline-3">
+<h3 id="org08bafb3"><span class="section-number-3">9.1</span> Haunted Jaunt</h3>
+<div class="outline-text-3" id="text-9-1">
 <p>
 There once was a boy out on a jaunt.
 </p>
@@ -556,13 +668,13 @@ Not a one can resist that nectar.
 </div>
 </div>
 </div>
-<div id="outline-container-orgf13c893" class="outline-2">
-<h2 id="orgf13c893"><span class="section-number-2">9.</span> Sweet</h2>
-<div class="outline-text-2" id="text-9">
+<div id="outline-container-org447552a" class="outline-2">
+<h2 id="org447552a"><span class="section-number-2">10</span> Sweet</h2>
+<div class="outline-text-2" id="text-10">
 </div>
-<div id="outline-container-org34fa295" class="outline-3">
-<h3 id="org34fa295"><span class="section-number-3">9.1.</span> Yum</h3>
-<div class="outline-text-3" id="text-9-1">
+<div id="outline-container-orgafa279e" class="outline-3">
+<h3 id="orgafa279e"><span class="section-number-3">10.1</span> Yum</h3>
+<div class="outline-text-3" id="text-10-1">
 <p>
 Shallow callow marshmallow
 </p>
@@ -577,13 +689,13 @@ Deep chasm between us
 </div>
 </div>
 </div>
-<div id="outline-container-orgb3a6807" class="outline-2">
-<h2 id="orgb3a6807"><span class="section-number-2">10.</span> Train/star-related</h2>
-<div class="outline-text-2" id="text-10">
+<div id="outline-container-orgc99a9b4" class="outline-2">
+<h2 id="orgc99a9b4"><span class="section-number-2">11</span> Train/star-related</h2>
+<div class="outline-text-2" id="text-11">
 </div>
-<div id="outline-container-org63d7e2f" class="outline-3">
-<h3 id="org63d7e2f"><span class="section-number-3">10.1.</span> Going Home</h3>
-<div class="outline-text-3" id="text-10-1">
+<div id="outline-container-org79e637f" class="outline-3">
+<h3 id="org79e637f"><span class="section-number-3">11.1</span> Going Home</h3>
+<div class="outline-text-3" id="text-11-1">
 <p>
 Riding home backwards,
 </p>
@@ -600,9 +712,9 @@ The Sun's in my eyes.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: eric</p>
-<p class="date">Created: 2022-06-15 Wed 20:54</p>
-<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+<p class="author">Author: Eric</p>
+<p class="date">Created: 2023-02-22 Wed 21:47</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
 </html>
