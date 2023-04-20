@@ -1,0 +1,660 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2023-04-20 Thu 16:13 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Eric" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgfe9e142">1. Winter 2022 Reviews</a>
+<ul>
+<li><a href="#org8b66707">1.1. OP</a></li>
+<li><a href="#org984db88">1.2. Oreo Golden Sandwich Cookies, Lemon Flavored Creme</a>
+<ul>
+<li><a href="#orgbc1cd80">1.2.1. Sabikui Bisco</a></li>
+<li><a href="#org2e742ac">1.2.2. Akebi-chan no Sailor-fuku</a></li>
+<li><a href="#orgbb23021">1.2.3. Sono Bisque Doll wa Koi wo Suru</a></li>
+<li><a href="#org4858fb5">1.2.4. Tokyo 24-ku</a></li>
+</ul>
+</li>
+<li><a href="#orgf7cc684">1.3. White Fudge Covered Oreo Sandwich Cookies, Holiday Edition</a>
+<ul>
+<li><a href="#orgc373da6">1.3.1. Koroshi Ai</a></li>
+<li><a href="#orgf2a838b">1.3.2. Eien no 831</a></li>
+<li><a href="#orgecdf981">1.3.3. Ryman's Club</a></li>
+</ul>
+</li>
+<li><a href="#org7d93fba">1.4. Oreo Caramel Flavored Creme Chocolate Sandwich Cookies</a>
+<ul>
+<li><a href="#org9795f72">1.4.1. Kimetsu no Yaiba: Yuukaku hen</a></li>
+<li><a href="#orgdd23c35">1.4.2. Genjitsu Shugi Yuusha no Oukoku Saikenki Part 2</a></li>
+<li><a href="#org3298112">1.4.3. Ousama Ranking</a></li>
+<li><a href="#org4650105">1.4.4. Vanitas no Carte 2nd Cour</a></li>
+</ul>
+</li>
+<li><a href="#orgfe00cfb">1.5. Jelly Donut Oreo, the shows I didn't write about before the season, but ended up watching:</a>
+<ul>
+<li><a href="#org4437427">1.5.1. The Orbital Children</a></li>
+<li><a href="#org051fefc">1.5.2. 86 Part 2</a></li>
+<li><a href="#orge994589">1.5.3. Kotarou Lives Alone</a></li>
+</ul>
+</li>
+<li><a href="#org5edcb71">1.6. ED</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgfe9e142" class="outline-2">
+<h2 id="orgfe9e142"><span class="section-number-2">1</span> Winter 2022 Reviews</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org8b66707" class="outline-3">
+<h3 id="org8b66707"><span class="section-number-3">1.1</span> OP</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Hell-oreo,
+</p>
+
+<p>
+I am revisiting this season and my excellent choice to organize shows into their counterparts among the Oreo family of cookies.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org984db88" class="outline-3">
+<h3 id="org984db88"><span class="section-number-3">1.2</span> Oreo Golden Sandwich Cookies, Lemon Flavored Creme</h3>
+<div class="outline-text-3" id="text-1-2">
+</div>
+<div id="outline-container-orgbc1cd80" class="outline-4">
+<h4 id="orgbc1cd80"><span class="section-number-4">1.2.1</span> Sabikui Bisco</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+I find it natural to compare Sabikui Bisco to a couple of the other shows this season - Ousama Ranking and 86. Whereas Ousama Ranking succintly gave bit characters motivation and relatability &lt;I don't seem to have finished this thought, but think I was denagrating Sabikui Bisco on this&gt;
+</p>
+
+<p>
+The whole season felt like an anime-fied Mad Max meets Quentin Tarantino. "Anime-fied" in the sense of giant crabs, giant mechs, and friendship. All of which I thoroughly enjoy! The treatment of some of these elements felt like a shoutout to anime of 80s (notably Nausicaa's pollution-spewing mechs and giant arthropods, or protagonists who refuse female attention for "some reason"). While I don't think this was my favorite giant fighting/fantasy world of the season, it certainly felt unique and enjoyable.
+</p>
+
+<p>
+8/10
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2e742ac" class="outline-4">
+<h4 id="org2e742ac"><span class="section-number-4">1.2.2</span> Akebi-chan no Sailor-fuku</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+In response to your pre-season "What", I counter, "Shows depicting a weird fantasy world where girls run around with no male characters (apart from an occasional father) are an anime tradition. Consider K-On, Madoka Magica, Gakkougurashi." But all of those are shows I'd have felt a little weird about watching in the common room of a dorm, especially if they lean into the leering camera angles of ecchi anime. Akebi-chan does have some of that male gaze direction (I'd say a similar amount as found in the manga, but translated from the manga's "very careful depiction of certain poses of it's female characters" to anime's more blunt "we're keeping the camera on her butt").
+</p>
+
+<p>
+I still really enjoyed the show. The animation and compositing were sometimes spectacular, the different characters' relationships with Akebi (various flavors of "this girl is weird and I lover her for it") were entertaining enough to fill the episodes they were asked to support, and there was a general vibe of "I'm a creepy guy watching middle-school girls". Oops, I mean "I'm a chill guy watching middle-school girls".
+</p>
+
+<p>
+Akebi screen cap show:
+</p>
+
+<ul class="org-ul">
+<li><a href="https://i.imgur.com/qv2ySJk.png">Long gurl</a></li>
+
+<li><a href="https://imgur.com/a/u9vWu8Q">Fun trip to the mall</a></li>
+</ul>
+
+<p>
+8/10
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgbb23021" class="outline-4">
+<h4 id="orgbb23021"><span class="section-number-4">1.2.3</span> Sono Bisque Doll wa Koi wo Suru</h4>
+<div class="outline-text-4" id="text-1-2-3">
+<p>
+A lot of really solid animation and it made me laugh and squirm despite having read through the manga. My notes are filled with somewhat suspect fragments like:
+</p>
+
+<ul class="org-ul">
+<li>Episode 2: "And the measuring scenes, particularly the breast movement and the foot scene, was great (let’s say because of the animation)."</li>
+
+<li>Episode 5: "The animation is still solid (some spectacular boob physics, but just the scene transitions and main characters changing directions can be great)."</li>
+
+<li>Episode 9: "Think they downplayed (at least in the translation) the idea of Gojo getting erections/masturbating to Marin, in the first part."</li>
+
+<li>Episode 10: "Not sure why they decided to use Marin bumping her head as the reason to not cosplay Veronica that day (instead of Gojo getting turned on (oh, guess I do understand))."</li>
+
+<li>Episode 11: "The (other) erection episode."</li>
+</ul>
+
+<p>
+Apart from the whole season being really well-animated, there were standout animation moments in most episodes. Among my favorites were: the magical girl anime and horror movie scenes (which had no right to be as good as they were, but I love that someone decided not to skimp here), Gojo's dream in episode 3, Grandpa's face in the car in episode 6, Gojo's reaction at being praised by Juju in episode 8 and the whole beach scene in the same episode (full-body rotoscoping for the win!), and Gojo's <a href="https://i.imgur.com/ZPca8qb.png">smeary</a> reactions in episode 11.
+</p>
+
+<p>
+8/10
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4858fb5" class="outline-4">
+<h4 id="org4858fb5"><span class="section-number-4">1.2.4</span> Tokyo 24-ku</h4>
+<div class="outline-text-4" id="text-1-2-4">
+<p>
+For whatever reason (your inspirational stick-to-it-iveness about anime), I watched a couple shows this season that I would normally have dropped. This was a mistake.
+</p>
+
+<p>
+Instead of watching "Tokyo 24-Cool \s" I could have: sat on my toilet, counted the number of dogs I can see from my bed, replied to spam emails, counted the number of toilets I can sit on from my bed.
+</p>
+
+<p>
+Despite my obsession with dogs/toilets/counting, my feelings about this can really be summarized as continuing and unrelenting disappointment. This can be demonstrated by the following commentary on some of your pre-season notes (not because you forced me to watch this, but because I looked back at our email exhange, and thought that this description was mine at first):
+</p>
+
+<ul class="org-ul">
+<li>"Someone really just said "what if Psycho-Pass was also Steins Gate and Power Rangers at the same time" and I applaud them for that absolute stroke of mad genius." I hate that this references three franchises I have positive feelings towards. A better comparison would be, "what if psychos took a pass, while whining about their fate, at Power Rangers".</li>
+
+<li>"I say mad genius and not the ordinary melancholic genius because from the first episode alone, I'm very iffy about this show." You benevolent fool.</li>
+
+<li>"It seems well thought out, and if the hour long premiere is anything to go by, the creators clearly have passion and plenty to say." Hahaha. Plenty to-hahahaha. Sure, they want to say, "Every conflict should be reduced to a trolley problem, which the protagonists eventually refuse to participate in with the power of &#x2026; friendship? community service? the app store?</li>
+
+<li>"But the characters aren't really selling me and I really don't like the MCs voice for some reason." Well, how about if the characters are all animated completely differently scene to scene, wouldn't that make you appreciate Shuta's voice.</li>
+</ul>
+
+<p>
+After watching the first episode, I noted "It already looks like Asumi ('s ghost?) has been integrated into the Hazard Cast system and is reaching out to the RGB trio to get them to take the system (and her) down." I have an insufficiently good memory to know if this was spelled out or I did some deduction, but for this to have turned out to be the main plot point was a little disappointing. Especially considering that most of the complimentary threads (the mind reading app, culinary battles, rats chewing through childrens' self-worth and wires) felt clumsily interwoven.
+</p>
+
+<p>
+4/10
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf7cc684" class="outline-3">
+<h3 id="orgf7cc684"><span class="section-number-3">1.3</span> White Fudge Covered Oreo Sandwich Cookies, Holiday Edition</h3>
+<div class="outline-text-3" id="text-1-3">
+</div>
+<div id="outline-container-orgc373da6" class="outline-4">
+<h4 id="orgc373da6"><span class="section-number-4">1.3.1</span> Koroshi Ai</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<p>
+Oh, so josei shows can suck too. I watched the first episode and was rewarded with reinforcement of my worst preconceptions about romance novels.
+</p>
+
+<p>
+Since I did watch an episode, I feel obliged to analyze the female character being named "Chateau". Is she supposed to be the bad boy's "home", a safe place for him to let his guard down? Or is it just a French word the author likes?
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf2a838b" class="outline-4">
+<h4 id="orgf2a838b"><span class="section-number-4">1.3.2</span> Eien no 831</h4>
+<div class="outline-text-4" id="text-1-3-2">
+<p>
+It's not been translated yet.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgecdf981" class="outline-4">
+<h4 id="orgecdf981"><span class="section-number-4">1.3.3</span> Ryman's Club</h4>
+<div class="outline-text-4" id="text-1-3-3">
+<p>
+Like a cold ramune-style bottle of green onion ginger ale, there's a lot (or at least 3 things) going on and I don't think they go well together.
+</p>
+
+<p>
+If this was a show about the high school badminton stars and also-rans and how they move through adult life, that could be great. But there were too many characters, being too thinly developed ("Oh, Usuyama gave up his badminton career to be a parent, let's skip to the second-to-last episode before we revisit this.") (Why even spend time on the nervous doubles player if he's the least important character in the main team of 5 guys and you've chosen to try to get us to care about like 15 characters in this show?) And <i>Run with the Wind</i> did it better.
+</p>
+
+<p>
+If this was a show about the clash between genius and hard work, that could be great. But the most clear differentiation between the way characters approach badminton is that the good guys have less time to train (and there are a couple sequences of one player training which boil down to, "his core is so strong now", when I'm positive that he was already being placed as the "muscular guy"). It's not even like they play this for some Karate Kid-esque "playing badminton is like selling soda" thing, with the salary man aspect of the show being entertaining enough but largely being used to up the stakes of the badminton part in a really annoying way by the end. And <i>Ping Pong the Animation</i> did it better.
+</p>
+
+<p>
+There are other quirks that didn't grab me as well. The relationships between the main and rival teams. The not quite <i>Kuroko no Basuke</i>-level of badminton superpowers that the main character is supposed to have which are not adequately supported by the presence of any special skills among other players (except that the last boss is left-handed). If I were told that any show I watched this season had 20 writers, who collaborated exquisite corpse style, this would be my guess.
+</p>
+
+<p>
+And the animation sucked (apart from the first episode and the last three episodes).
+</p>
+
+<p>
+4/10
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7d93fba" class="outline-3">
+<h3 id="org7d93fba"><span class="section-number-3">1.4</span> Oreo Caramel Flavored Creme Chocolate Sandwich Cookies</h3>
+<div class="outline-text-3" id="text-1-4">
+</div>
+<div id="outline-container-org9795f72" class="outline-4">
+<h4 id="org9795f72"><span class="section-number-4">1.4.1</span> Kimetsu no Yaiba: Yuukaku hen</h4>
+<div class="outline-text-4" id="text-1-4-1">
+<p>
+Through no intrinsic faults, I was less charmed by this season than the first (for sheer novelty) or the movie (for condensed demon slay-itude). Not to say I didn't really enjoy this season or this short cour format; it would be my preference for the adaptation going forward. As the season progressed, I was oscillating between, "Oh, <b>another</b> super dynamic action shot with awesome effect animation ಠ<sub>ಠ</sub>" and "Oh, another <b>super</b> dynamic action shot with <b>awesome</b> effect animation \(°^°)/". The tenth episode was non-Ousama Ranking action highlight of the season. It had everything I could ask for: brilliant effects (especially Uzui's explosions), dynamic camera movement (like just about every action scene in this series), deformed characters (which rarely happens in this series, at least in the way I like it), and lots of yelling (to such an extent that it got laughable, before getting emotional again).
+</p>
+
+<p>
+This definitely tops my ranking of magical men fighting fabric in anime!
+</p>
+
+<p>
+8/10
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgdd23c35" class="outline-4">
+<h4 id="orgdd23c35"><span class="section-number-4">1.4.2</span> Genjitsu Shugi Yuusha no Oukoku Saikenki Part 2</h4>
+<div class="outline-text-4" id="text-1-4-2">
+<p>
+This show just said "some slaves want to be slaves".
+</p>
+
+<p>
+5/10
+</p>
+
+<p>
+I have more thoughts, but generally have a hard time either taking this show seriously or laughing along with it. Let me know if I'm wrong, but this doesn't give me a "we're making fun of isekai" vibe. For a show to have time loops (effectively), secret plots from the first season being revisited (with little new information) four episodes into the second season and in the last episode of same, and triumphant discovery of okonomyaki sauce, but not laugh at itself is hard to swallow. Guess that's where the sauce comes in handy.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3298112" class="outline-4">
+<h4 id="org3298112"><span class="section-number-4">1.4.3</span> Ousama Ranking</h4>
+<div class="outline-text-4" id="text-1-4-3">
+<p>
+In my head, I segment Ousama Ranking into two parts. First, the "Oh, you think you hate/love this character? Here's why you should <a href="https://i.imgur.com/InTnxpT.png">love/hate</a> them. You fool!" Second, the absolutely jam-packed directorial and animation efforts of the last 7 or so episodes. There were lots of additional neat elements, to name a few: the general treatment of big/small characters, Bojji and Daida's relationship (where Daida has been taught to protect Bojji, which turned into coldness or pity), Hiling Saiyan-screaming to heal people.
+</p>
+
+<p>
+9/10
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4650105" class="outline-4">
+<h4 id="org4650105"><span class="section-number-4">1.4.4</span> Vanitas no Carte 2nd Cour</h4>
+<div class="outline-text-4" id="text-1-4-4">
+<p>
+For the second season of a show I liked for it's action, backgrounds of Paris streets and bougey interiors, and some mystery (but really just unrevealed character backstories), I got very little of that. Setting most of the season in a snowy forest, dark cabins or castles, and a shadow realm meant much less embroidery for some reason. And the action really felt bookended with a good first episode and final mini-arc, but some "trying to chew through my own arm covered in wet cardboard" middle episodes. That's a bit hyperbolic, but I felt this was a bit of a letdown.
+</p>
+
+<p>
+Some other comments. The mechanism of the Snow Arc was repeatedly demonstrated as "let's revisit already known events with some additional context". This is a really fun mechanism, but it lost some power after "reveals" from Jeanne, Chloe, Jean-Jacques, and Vanitas. (I suppose Astolfo had a flashback too but it was more of a "oh, if we're going to have him pop up again we have to make the audience care about him again.") Also, having the Metal Dog Arc start with Vanitas blushing furiously about his own feelings either painted the previous season's efforts to ship Vanitas and Jeanne strongly as "Vanitas was playing around with Jeanne because, you know, he can't feel love" or it trivializes his blushes as some weird stifling-his-own-feelings thing (or it could be due to trauma, geez).
+</p>
+
+<p>
+6/10
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfe00cfb" class="outline-3">
+<h3 id="orgfe00cfb"><span class="section-number-3">1.5</span> Jelly Donut Oreo, the shows I didn't write about before the season, but ended up watching:</h3>
+<div class="outline-text-3" id="text-1-5">
+</div>
+<div id="outline-container-org4437427" class="outline-4">
+<h4 id="org4437427"><span class="section-number-4">1.5.1</span> The Orbital Children</h4>
+<div class="outline-text-4" id="text-1-5-1">
+<p>
+When The Orbital Children lets its characters playfully problem solve in its whimsical space/capitalist environment, it's a great show. As the short series progressed, those moments remained, but were sidelined by longer scenes meant to convey its mildly interesting explorations of AI, childhood, government, and social media.
+</p>
+
+<p>
+Plus, this unexpectedly philosophical <a href="https://i.imgur.com/Rz8Hex7.png">moment</a>.
+</p>
+
+<p>
+7/10
+</p>
+</div>
+</div>
+
+<div id="outline-container-org051fefc" class="outline-4">
+<h4 id="org051fefc"><span class="section-number-4">1.5.2</span> 86 Part 2</h4>
+<div class="outline-text-4" id="text-1-5-2">
+<p>
+Ambitious action, dextrous direction, and stirring storytelling. Those were what I was looking for from the last two episodes to justify their delay. There was good action in episode 11 and the direction was fun in both episodes. But it felt like they went beyond "paying off emotional and plot developments" into "making it rain like Elon Musk at a metaverse strip club with a wad of bite-coins". Not to say I didn't enjoy seeing the emotional reunions and the aftermath of war (Yay, the racists are now refugees, having to rely on those they formerly oppressed. No way that leads to any sort of conflict.)
+</p>
+
+<p>
+One wrinkle I enjoyed. So you know how Shin is a sad boy? And how that means he only ever looks like he is halfway through a documentary about the many uses of plantains? Well there were some really un-Shin-like expressions in episode 11. If his plantain facedness is due to inner trauma (rather than skimping on character animation), then this could reflect the relief he felt and evolution he is undergoing. Lena is really being portrayed as some personal savior (or love interest, big diff) for Shin, which could make for interesting character interactions in the future. Or more "let's keep from breaking down due to our horrible pasts while making small talk".
+</p>
+
+<p>
+7/10
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge994589" class="outline-4">
+<h4 id="orge994589"><span class="section-number-4">1.5.3</span> Kotarou Lives Alone</h4>
+<div class="outline-text-4" id="text-1-5-3">
+<p>
+Sometimes an anime comes along and makes you think, "Wow, Kotarou really lives alone." Now that I'm done with my Gigguk impression &#x2026; <b>cough</b> &#x2026; Okay, now I'm done.
+</p>
+
+<p>
+Selections from my notes:
+</p>
+
+<ul class="org-ul">
+<li>Episode 1: "I'm down for this kind of sickly sweet, with a tinge of sad, story."</li>
+
+<li>Episode 2: "Such bittercute."</li>
+
+<li>Episode 3: "Somehow even sadder&#x2026;"</li>
+
+<li>Episode 4: '"It never occurred to me that me being born was a good thing.' :|" "It feels like every moment I'm watching, I'm having some emotion (even if often that emotion is 'Aww')."</li>
+
+<li>Episode 5: "The tissue bit was very sad."</li>
+
+<li>Episode 6-7: (Omitted due to lack of notes that wouldn't contain spoilers, because I really think this is a good show.)</li>
+
+<li>Episode 8: "Fun to see a new character be introduced and bring to light some new behaviour (and have that be slightly subverted in the glove scenes)."</li>
+
+<li>Episode 9: (Omitted)</li>
+
+<li>Episode 10: "So much sad it's kind of amazing."</li>
+</ul>
+<p>
+There were just so many little moments that I will sort of stick with me. In it's skit-like structure, I would compare it to <i>My Neighbors the Yamadas</i>, but relying more on cuteness, and some admittedly soap operatic devices, rather than tender animation and direction.
+</p>
+
+<p>
+8/10
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5edcb71" class="outline-3">
+<h3 id="org5edcb71"><span class="section-number-3">1.6</span> ED</h3>
+<div class="outline-text-3" id="text-1-6">
+<p>
+Goodbye-oreo
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Eric</p>
+<p class="date">Created: 2023-04-20 Thu 16:13</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
