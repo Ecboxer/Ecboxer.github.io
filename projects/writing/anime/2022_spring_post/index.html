@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2023-04-20 Thu 16:33 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Eric" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org8520e39">1. Spring 2022 Reviews</a>
+<ul>
+<li><a href="#org6ff8025">1.1. OP</a></li>
+<li><a href="#orgee4e929">1.2. Qian Cong Shou</a></li>
+<li><a href="#org23a2f44">1.3. Paripi Koumei</a></li>
+<li><a href="#orgad8edca">1.4. Aharen-san</a></li>
+<li><a href="#orge2ead9b">1.5. Komi-san</a></li>
+<li><a href="#orgbf21fae">1.6. Ao Ashi</a></li>
+<li><a href="#orgecc2710">1.7. Dance Dance Danseur</a></li>
+<li><a href="#org8165f1a">1.8. Spy x Family</a></li>
+<li><a href="#orgf13a772">1.9. Honzuki</a></li>
+<li><a href="#org0f94f8c">1.10. Summertime Render</a></li>
+<li><a href="#org618ab94">1.11. Shokei Shouji</a></li>
+<li><a href="#orgd8886b7">1.12. Koi wa Sekai Seifuku no Ato de</a></li>
+<li><a href="#org91fc97d">1.13. Vampire in the Garden</a></li>
+<li><a href="#orga1deb50">1.14. ED</a></li>
+<li><a href="#org36c63ab">1.15. Follow-up</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8520e39" class="outline-2">
+<h2 id="org8520e39"><span class="section-number-2">1</span> Spring 2022 Reviews</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org6ff8025" class="outline-3">
+<h3 id="org6ff8025"><span class="section-number-3">1.1</span> OP</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Howdy,
+</p>
+
+<p>
+I'm finished with the shows from this season and melting into a puddle of sweat and eyeballs, so seems like a perfect time to send this.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgee4e929" class="outline-3">
+<h3 id="orgee4e929"><span class="section-number-3">1.2</span> Qian Cong Shou</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+It's not the show's fault that I don't speak Chinese, but I certainly don't. And it's not the fan subbers' responsibility to translate the show well, but they certainly didn't. That or the show lobbed a whole bunch of hooey at me and expected it to stick like a bowl of cold pudding in the face when it just confused me like a bowl of cold pudding in the face. That's not to say it's a bad show. Yes, the characters are your typical shonen archetypes. Yes, those shonen archetypes are: "yells and hurts self", "broods" and "girl". Yes, the climactic moment of the 15 episode season brings in a previously unmentioned big bad, severs the most meaningful connection the main character forged, and basically wraps on "at least <b>shrugs</b> we're better friends <b>shrugs</b> now". This really felt like the adaptation of a manga I wouldn't like, in that it: introduced a whole bunch of stuff in episode one, kind of fucked around for the next four episodes, taunted me with the faintest whiff of plot, then fucked around until the climax.
+</p>
+
+<p>
+There was some really fun CG action scenes and impact frames integrated into the action in fun ways. Impact frames used in such an extended manner that they don't really count as frames so much as the animators chose to do smeary black-and-white animation for stretches.
+</p>
+
+<p>
+5/10 Most Objects with Faces for All the Objects with Faces
+</p>
+</div>
+</div>
+
+<div id="outline-container-org23a2f44" class="outline-3">
+<h3 id="org23a2f44"><span class="section-number-3">1.3</span> Paripi Koumei</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+I am still genuinely tickled by the premise of this show and was looking forward to seeing Koumei and his wacky friends stretch ancient war tactics to fit the music industry. Sure, we got some of that, but the friends weren't nearly as wacky as I'd thought. Eiko and Kabe in particular came off as very earnest and the highlights of the show for me came when they were played off against a sillier character. Even Nanami being the pawn/figurehead/&lt;some war analogy&gt; of an underhanded producer got me more invested than the girl who runs and sings. Despite my disinterest in the characters, there were still memorable moments: Koumei trapping hundreds of dancers in a club, Koumei tracking Kabe into the laundromat, Koumei apparently having a secret blackmail (?) plan that never got revealed. I just enjoy Koumei.
+</p>
+
+<p>
+7/10: Most Sunglasses for All the Sunglasses
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgad8edca" class="outline-3">
+<h3 id="orgad8edca"><span class="section-number-3">1.4</span> Aharen-san</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+I'm not sure if this show had a lot of gags or about five that they wrung the ever-living snot out of. For the record, those five would be: "Aharen gets close to Raido", "Raido jumps to conclusions", "We found Oshiro!", "Cute mascot character", and "Cultural reference". "But what about the "Such esteem!" teacher" you may ask. Subset of AGC2R of course. "But what about Aharen crushing Raido at games?" you may inquire. Mix of RJ2C and a reverse AGC2R since Raido assumes he can ever match Aharen at anything and for Aharen to get close to Raido she must start out far away (in terms of skill at reversi). "But what about Aharen's younger sister being taller than her? Or her younger brother dressing like her?" you may demand. First, stop asking so many questions while I'm in the middle of writing down my thoughts, please. Second, those are not funny. Okay, I've sufficiently convinced myself that there's no particular reason to have enjoyed this show. But I still enjoyed it.
+</p>
+
+<p>
+6/10 Most Crane Game Footage for All the Crane Game Footage
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge2ead9b" class="outline-3">
+<h3 id="orge2ead9b"><span class="section-number-3">1.5</span> Komi-san</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+My favorite ending (credits scene)! I love that pixelated, color block, rotoscope look.
+</p>
+
+<p>
+There are some interesting retreads from the first season. In terms of the "introduce a character, have them interact strangely with Komi" bit which works well enough. But also, there's definitely an episode schema where we watch some situation play out from the perspective of either (a) Komi or (b) the gang, cue awkward, youthful hijinks. Then, we watch the same events from the other's perspective, cue fumbling, naive shenanigans plus an "Aww" moment for Komi. Examples from this season include the Christmas episode and the beginning of episode 7 where Komi and Tadano see each other in school after Tadano's sick day. It's a fun format and fits well with the main gag driver/miscommunication of the series "Komi intimidates people into leaving her alone, but is also too shy to reach out to them". There were some sweet moments, but probably nothing will be as sweet as the first episode of the first season, so my highlights were more often the gag moments like the second "Would you date her?" bit, Yamai trying to oggle/grope Komi, and the Eraser War.
+</p>
+
+<p>
+7/10 Best Character Running with Another Character's Tights on Their Head Scene for Yamai and Komi's Tights
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgbf21fae" class="outline-3">
+<h3 id="orgbf21fae"><span class="section-number-3">1.6</span> Ao Ashi</h3>
+<div class="outline-text-3" id="text-1-6">
+<p>
+I'm 90% sure there was rotoscoped action in a couple episodes (2 and 9) but it was so brief that I'm not relying on seeing any more in the second half. Even though it would be super cool to see a rotoscoped soccer anime, there were still some good action scenes and we've finally made it to the point where Aoi can learn tactics and teamwork instead of just winning with the power of his forceful gaze.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgecc2710" class="outline-3">
+<h3 id="orgecc2710"><span class="section-number-3">1.7</span> Dance Dance Danseur</h3>
+<div class="outline-text-3" id="text-1-7">
+<p>
+One of the shows of this season where the opening or ending scenes disregard the character designs (along with Ao Ashi's ending). They managed to get to a good ending point and had some really neat dance animation (and Luou's scary, smeary scenes) along with some stiff, animation-light episodes. But the manga itself doesn't devote much space to extended dance sequences so getting any of them was nice. I was surprised that the second-half of the season didn't involve much CG for the dance scenes. It wasn't that I was eager to see them, but there were some interesting efforts to make the CG blend in during episode 5 (overhead shots, shooting the dancers' shadows, some scritchy-scratchy effects over the figures). And having them crop up in only one episode just leaves me a little confused (like there was definitely some consideration given to it, but was that the main studio's choice or some contractor?).
+</p>
+
+<p>
+7/10 Best Old Person Face for the Grandmother
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8165f1a" class="outline-3">
+<h3 id="org8165f1a"><span class="section-number-3">1.8</span> Spy x Family</h3>
+<div class="outline-text-3" id="text-1-8">
+<p>
+Like being poked repeatedly in the cheek with a cooked carrot. At first you ignore it and stay stoic. Then, the carrot starts to disintegrate in the poker's hands and you feel the ridiculousness of the situation. Eventually, you're covered in carrot mush and can't help laughing. That's how I feel about the little moments, mostly Anya-driven, that were regularly getting chuckles out of me by the end of the season. "Woow." "Wait! Papa who is a good and normal person." Those probably wouldn't have been nearly as amusing if they hadn't been preceded by hours of cute silliness, but that doesn't take away from their enjoyability. Plus, this is absurdly well-animated for a comedy show and was a great successor to Vanitas for "Cool European city street scenes" this season.
+</p>
+
+<p>
+8/10 Best Book Series for the "&#x2026; for a good child" series ("Arithmetic for a good child", "Language for a good child", &#x2026;)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf13a772" class="outline-3">
+<h3 id="orgf13a772"><span class="section-number-3">1.9</span> Honzuki</h3>
+<div class="outline-text-3" id="text-1-9">
+<p>
+The first season is still the high-water mark for me, the action scenes and having Myne recall things from her world for other folks to create isn't as fun as seeing the experimentation and struggle from her perspective. There were definitely some emotional moments, but I felt they were played off as "Myne wants to be with her family, but people are stopping her" rather than getting into the dichotomy between that desire and, for example, Delia's desire to stay with Dirk. Didn't Myne mention that she had a younger sister in her old life, that seems like something that could have been explored more fully. But I'd still rather have those sorts of parallels receive a too-light touch than be shoved down my throat.
+</p>
+
+<p>
+At one point, I became a bit confused by what plot justifications I was just having trouble grasping because this is a feudal society, and which ones were poorly justified. But when I gave myself in to just trusting the story, it became more enjoyable.
+</p>
+
+<p>
+7/10 Best Character Design for "This dude is fat, so gotta be evil"
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0f94f8c" class="outline-3">
+<h3 id="org0f94f8c"><span class="section-number-3">1.10</span> Summertime Render</h3>
+<div class="outline-text-3" id="text-1-10">
+<p>
+I'm conducting a scavenger hunt while watching this, but I won't reveal what it's for until the series ends.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org618ab94" class="outline-3">
+<h3 id="org618ab94"><span class="section-number-3">1.11</span> Shokei Shouji</h3>
+<div class="outline-text-3" id="text-1-11">
+<p>
+Dropped after episode 7.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd8886b7" class="outline-3">
+<h3 id="orgd8886b7"><span class="section-number-3">1.12</span> Koi wa Sekai Seifuku no Ato de</h3>
+<div class="outline-text-3" id="text-1-12">
+<p>
+I started this because I was so tickled by the premise of Paripi Koumei that I thought, "Maybe a show with another silly premise will be good." I definitely laughed more at this show than Koumei (even though that's not a fair comparison). Whenever the premise of "superheroes as celebrities and supervillains as an evil corporation" was taken seriously, it got at least a chuckle out of me. "Let's put our main heroine in a situation where she's going to be turned into a giant monster." Of course, her main concern is how to turn down the promotion without disappointing friends and family. I don't have a second example as good as that one, and if I did then it would have taken this show from just fun to actually funny. As it is, there were a few clever pieces in a relatively inoffensive package. The animation was just meh (the henshin scenes were aiming more for comedy than impact), except for the final episode where we got some really good character animation for a funky monster and the fight against it.
+</p>
+
+<p>
+7/10 Best Pronunciation for "Wread Jeelautoh"
+</p>
+</div>
+</div>
+
+<div id="outline-container-org91fc97d" class="outline-3">
+<h3 id="org91fc97d"><span class="section-number-3">1.13</span> Vampire in the Garden</h3>
+<div class="outline-text-3" id="text-1-13">
+<p>
+My pick for most vibe-y show of the season. Steampunk, snowpunk, vampires and samurai. There were good action scenes, but the show felt stuck between some episodic road trip movie and a mystery. It was a good enough example of the first genre, but the mystery was a less interesting version of the "Fena: Pirate Princess" "Let's find a place"-type mystery. And I think of the road trip genre being elevated by the dynamic between main characters, where this show's two protagonists were a little tame. There was a sort of "power dynamic shift" over the course of the series and an underlying theme of music tying them together, but the former came off as begruding ("<b>sigh</b> fine, if we have to, we'll give this character growth") and the latter went in and out for me. The vibe really was great though.
+</p>
+
+<p>
+6/10 Most "Hey! Why wasn't this just a movie?" for "Hey! They're shoehorning pseudo-cliffhangers into this Bonny and Clyde story and it kinda sucks."
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga1deb50" class="outline-3">
+<h3 id="orga1deb50"><span class="section-number-3">1.14</span> ED</h3>
+<div class="outline-text-3" id="text-1-14">
+<p>
+Adios,
+Eric
+</p>
+</div>
+</div>
+
+<div id="outline-container-org36c63ab" class="outline-3">
+<h3 id="org36c63ab"><span class="section-number-3">1.15</span> Follow-up</h3>
+<div class="outline-text-3" id="text-1-15">
+<p>
+Hey, I remember the part in Hamlet where the characters played Truth or Dare.
+</p>
+
+<p>
+Hamlet: I dare you to tell me the last person you killed?
+</p>
+
+<p>
+Claudius: &#x2026;
+</p>
+
+<p>
+Gertrude: I did have a poor killed last week for poor-ing in my line of sight.
+</p>
+
+<p>
+Claudius: Oh Gertrude, I want to jump your bones.
+</p>
+
+<p>
+Ophelia: I killed the beat at my last dance battle. Does that count?
+</p>
+
+<p>
+Hamlet: Drat, my ingenious plan failed.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Eric</p>
+<p class="date">Created: 2023-04-20 Thu 16:33</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

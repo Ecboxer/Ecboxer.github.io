@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2023-04-20 Thu 16:40 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Eric" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgb8674e0">1. Summer 2022 Previews</a>
+<ul>
+<li><a href="#orgdda969c">1.1. OP</a></li>
+<li><a href="#org27e72a0">1.2. Frank Boardman "Pistol Pete" Eaton</a>
+<ul>
+<li><a href="#orge3bc8f9">1.2.1. Summertime Render</a></li>
+<li><a href="#org68cffed">1.2.2. Ao Ashi</a></li>
+<li><a href="#orgccc0fbe">1.2.3. Onipan</a></li>
+</ul>
+</li>
+<li><a href="#orgdfb44ff">1.3. William Frederick "Buffalo Bill" Cody</a>
+<ul>
+<li><a href="#orgcaebd09">1.3.1. Overlord IV</a></li>
+<li><a href="#org3951924">1.3.2. Danmachi IV</a></li>
+<li><a href="#orga96a882">1.3.3. MADE IN ABYSS</a></li>
+</ul>
+</li>
+<li><a href="#org0682a38">1.4. Charlie Siringo</a>
+<ul>
+<li><a href="#orgd7b4237">1.4.1. Isekai Ojisan</a></li>
+<li><a href="#org70dbc8d">1.4.2. Lycoris Recoil</a></li>
+<li><a href="#org76e6a18">1.4.3. Bucchigire!</a></li>
+<li><a href="#orgdc0abf1">1.4.4. Warau Arsnotoria Sun&#x2013;!</a></li>
+<li><a href="#orga2bdef7">1.4.5. Yurei Deco</a></li>
+<li><a href="#org4f4374d">1.4.6. KJ File</a></li>
+</ul>
+</li>
+<li><a href="#orgd001c0c">1.5. Theodore Roosevelt</a>
+<ul>
+<li><a href="#org8a74e80">1.5.1. Yofukashi no Uta</a></li>
+<li><a href="#org9109d07">1.5.2. Hoshi no Samidare</a></li>
+<li><a href="#org72163ed">1.5.3. RWBY: Hyosetsu Teikoku</a></li>
+<li><a href="#org7a19ae6">1.5.4. Kuro no Shoukanshi</a></li>
+</ul>
+</li>
+<li><a href="#orgbfb1a8a">1.6. ED</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb8674e0" class="outline-2">
+<h2 id="orgb8674e0"><span class="section-number-2">1</span> Summer 2022 Previews</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-orgdda969c" class="outline-3">
+<h3 id="orgdda969c"><span class="section-number-3">1.1</span> OP</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Howdy,
+</p>
+
+<p>
+I like saying "howdy", so how'd you like a cow-poke themed anime preview? What? It's the rootin' tootin'-est thing you've ever laid eye upon? Shucks.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org27e72a0" class="outline-3">
+<h3 id="org27e72a0"><span class="section-number-3">1.2</span> Frank Boardman "Pistol Pete" Eaton</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+This guy lived to be almost 100, so that's a good enough reason for me to use him as an analogy for shows that I'm still watching from last season.
+</p>
+</div>
+<div id="outline-container-orge3bc8f9" class="outline-4">
+<h4 id="orge3bc8f9"><span class="section-number-4">1.2.1</span> Summertime Render</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+Bloop, bloop, I am watching this.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org68cffed" class="outline-4">
+<h4 id="org68cffed"><span class="section-number-4">1.2.2</span> Ao Ashi</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+Bleep, blorp, I am watching this.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgccc0fbe" class="outline-4">
+<h4 id="orgccc0fbe"><span class="section-number-4">1.2.3</span> Onipan</h4>
+<div class="outline-text-4" id="text-1-2-3">
+<p>
+Blop, blap, I will probably catch up on this cause it's fine.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdfb44ff" class="outline-3">
+<h3 id="orgdfb44ff"><span class="section-number-3">1.3</span> William Frederick "Buffalo Bill" Cody</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+I recognize this guy's name. These are the shows that make me think, "I recognize this guy's name."
+</p>
+</div>
+<div id="outline-container-orgcaebd09" class="outline-4">
+<h4 id="orgcaebd09"><span class="section-number-4">1.3.1</span> Overlord IV</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<p>
+My favorite story about the politics of a corporation trying to consolidate its position. I guess this season introduces some competitors?
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3951924" class="outline-4">
+<h4 id="org3951924"><span class="section-number-4">1.3.2</span> Danmachi IV</h4>
+<div class="outline-text-4" id="text-1-3-2">
+<p>
+I'm not super  excited to watch another season of this, but feel an obligation to keep going. As long as there are a couple exciting moments I'll feel justified in sticking with this.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga96a882" class="outline-4">
+<h4 id="orga96a882"><span class="section-number-4">1.3.3</span> MADE IN ABYSS</h4>
+<div class="outline-text-4" id="text-1-3-3">
+<p>
+The market of values is fun, but I might have to reread the manga to remember stuff.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0682a38" class="outline-3">
+<h3 id="org0682a38"><span class="section-number-3">1.4</span> Charlie Siringo</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+Apparently this guy became a Pinkerton, but was sympathetic to some union workers and may have prevented a few lynchings. These are shows that make me think, "Hey, this show may suck or it may be sympathetic to union workers."
+</p>
+</div>
+<div id="outline-container-orgd7b4237" class="outline-4">
+<h4 id="orgd7b4237"><span class="section-number-4">1.4.1</span> Isekai Ojisan</h4>
+<div class="outline-text-4" id="text-1-4-1">
+<p>
+Hmm, I'll watch this, but am not sure what to expect. The animation in the promo was alright, although the line quality was funky enough that I'm not sure if it's an indicator of an ambitious team or they just spent their budget on a filter and are going to cut corners somewhere else. I think the director (Shigeki Kawai) has done a bunch of action work in the past, but this doesn't look like an action-heavy show. And I'm not sure how ecchi this is going to be, cause the manga cover looks like it could go either way and the studio previously did Ganbare Douki-chan, which has, ahem, caught my eye on r/manga, but I don't know if the anime was any good.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org70dbc8d" class="outline-4">
+<h4 id="org70dbc8d"><span class="section-number-4">1.4.2</span> Lycoris Recoil</h4>
+<div class="outline-text-4" id="text-1-4-2">
+<p>
+The promo video didn't catch me, but I like the promo image and the description. Who doesn't want to see a silly cafe show?
+</p>
+
+<p>
+I like the character designer (Imigi Muru)'s manga, but don't know the scriptwriter (Asaura)'s work other than some peripheral knowledge that Ben-To seems shlocky.
+</p>
+
+<p>
+Note: I've watched the first episode since writing the above comments, and decided that this could be more than a silly cafe show, but could also be super shlocky.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org76e6a18" class="outline-4">
+<h4 id="org76e6a18"><span class="section-number-4">1.4.3</span> Bucchigire!</h4>
+<div class="outline-text-4" id="text-1-4-3">
+<p>
+Criminals with magic swords fighting in the dark with funky compositing, sounds neat. There's one shot towards the end of the second promo video where the camera is dynamic, but I'm not convinced it'll be an animation marvel. Just making me care about most of the eight main characters would be enough. I guess Geno Studio did Golden Kamuy which I didn't watch, so I don't know if they'll pull off these very 2000s anime designs.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgdc0abf1" class="outline-4">
+<h4 id="orgdc0abf1"><span class="section-number-4">1.4.4</span> Warau Arsnotoria Sun&#x2013;!</h4>
+<div class="outline-text-4" id="text-1-4-4">
+<p>
+I'm gonna watch this, even if it looks like a self-serious Little Witch Academia. The director (Naoyuki Tatsuwa) is a former SHAFT-y, and there were some visually impressive moments in the teaser (like the very first shot which does a weird zoom-out/pan-down combined with going into a fish-eye view).
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga2bdef7" class="outline-4">
+<h4 id="orga2bdef7"><span class="section-number-4">1.4.5</span> Yurei Deco</h4>
+<div class="outline-text-4" id="text-1-4-5">
+<p>
+Wooo! I don't know if this will actually be good, in the sense that it looks like a childrens' show. But the description sounds like it could be setting up a mystery.
+</p>
+
+<p>
+Note: I've since watched the first episode and it's a whimsically portrayed dystopia (reminiscent of Yuasa's Kaiba) but with very contemporary elements. I'll like it more if this has some interesting mystery or asks unexpected questions about society, but it's also a fun world to watch the characters move about in.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4f4374d" class="outline-4">
+<h4 id="org4f4374d"><span class="section-number-4">1.4.6</span> KJ File</h4>
+<div class="outline-text-4" id="text-1-4-6">
+<p>
+I know nothing about this, but the director (Funada Akira) produced something called Business Fish, which I've not watched but has convinced me this will be amazing.
+</p>
+
+<p>
+Post-watching the first episode (and only translated episode I could find) of Business Fish: I like Business Fish, but would also not be surprised if the minds behind Business Fish created a non-Business Fish show that I didn't like as much as Business Fish. Buiiiisinessssss Fiiiiiish. That's a fish, that does business.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd001c0c" class="outline-3">
+<h3 id="orgd001c0c"><span class="section-number-3">1.5</span> Theodore Roosevelt</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+Is this guy best described as a cowboy? Probably not, but Wikipedia decided to put him on a list of cowfolks, and who am I to squabble with strangers on the internet? These are the shows that make me think, "Is this best done as an anime?"
+</p>
+</div>
+<div id="outline-container-org8a74e80" class="outline-4">
+<h4 id="org8a74e80"><span class="section-number-4">1.5.1</span> Yofukashi no Uta</h4>
+<div class="outline-text-4" id="text-1-5-1">
+<p>
+I like how colorful the promo is, but not sure if that's enough for me to watch this. I like the manga well enough though.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9109d07" class="outline-4">
+<h4 id="org9109d07"><span class="section-number-4">1.5.2</span> Hoshi no Samidare</h4>
+<div class="outline-text-4" id="text-1-5-2">
+<p>
+If this isn't good, I'm going to be so sad.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org72163ed" class="outline-4">
+<h4 id="org72163ed"><span class="section-number-4">1.5.3</span> RWBY: Hyosetsu Teikoku</h4>
+<div class="outline-text-4" id="text-1-5-3">
+<p>
+All I really know about RWBY is that one of my favorite mangaka (Miwa Shirow) took a hiatus from Dogs: Bullets and Carnage to presumably (or maybe just coincidentally) work on the RWBY manga. And never went back to Dogs. Boo. I don't love the look of the CG.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7a19ae6" class="outline-4">
+<h4 id="org7a19ae6"><span class="section-number-4">1.5.4</span> Kuro no Shoukanshi</h4>
+<div class="outline-text-4" id="text-1-5-4">
+<p>
+Why does the main character have a knife behind his ear?
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbfb1a8a" class="outline-3">
+<h3 id="orgbfb1a8a"><span class="section-number-3">1.6</span> ED</h3>
+<div class="outline-text-3" id="text-1-6">
+<p>
+Tata,
+Eric
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Eric</p>
+<p class="date">Created: 2023-04-20 Thu 16:40</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

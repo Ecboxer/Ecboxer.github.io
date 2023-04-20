@@ -1,0 +1,629 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2023-04-20 Thu 17:00 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Eric" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org4140341">1. Summer 2022 Reviews</a>
+<ul>
+<li><a href="#orgb3cae99">1.1. OP</a></li>
+<li><a href="#org1b606ba">1.2. Frank Boardman "Pistol Pete" Eaton</a>
+<ul>
+<li><a href="#orgf16df61">1.2.1. Summertime Render</a></li>
+<li><a href="#org3cf13ce">1.2.2. Ao Ashi</a></li>
+<li><a href="#orgf1f6dbf">1.2.3. Onipan</a></li>
+</ul>
+</li>
+<li><a href="#orgaa05c4e">1.3. William Frederick "Buffalo Bill" Cody</a>
+<ul>
+<li><a href="#org960f58a">1.3.1. Overlord IV</a></li>
+<li><a href="#orgfc65c99">1.3.2. Danmachi IV</a></li>
+<li><a href="#orge8a932f">1.3.3. MADE IN ABYSS</a></li>
+</ul>
+</li>
+<li><a href="#orgb807410">1.4. Charlie Siringo</a>
+<ul>
+<li><a href="#orgb239037">1.4.1. Isekai Ojisan</a></li>
+<li><a href="#orgd8f846e">1.4.2. Lycoris Recoil</a></li>
+<li><a href="#org616d22a">1.4.3. Bucchigire!</a></li>
+<li><a href="#org35a2758">1.4.4. Warau Arsnotoria Sun&#x2013;!</a></li>
+<li><a href="#orga7581b7">1.4.5. Yurei Deco</a></li>
+<li><a href="#orgb95a3fa">1.4.6. KJ File</a></li>
+</ul>
+</li>
+<li><a href="#org1ed7b6c">1.5. Theodore Roosevelt + Whatever I didn't write about before the season but ended up watching</a>
+<ul>
+<li><a href="#org52d4244">1.5.1. Hoshi no Samidare</a></li>
+<li><a href="#org82c2f29">1.5.2. Musashino</a></li>
+<li><a href="#org8795f39">1.5.3. Fuuto Tantei</a></li>
+<li><a href="#orgf834961">1.5.4. Cyberpunk Edgerunners</a></li>
+</ul>
+</li>
+<li><a href="#orgd59ebd5">1.6. ED</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4140341" class="outline-2">
+<h2 id="org4140341"><span class="section-number-2">1</span> Summer 2022 Reviews</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-orgb3cae99" class="outline-3">
+<h3 id="orgb3cae99"><span class="section-number-3">1.1</span> OP</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Howdy,
+</p>
+
+<p>
+Why did the me from several months ago spend time looking up cowboys? Not sure. Um, here are my reviews for the summer season.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1b606ba" class="outline-3">
+<h3 id="org1b606ba"><span class="section-number-3">1.2</span> Frank Boardman "Pistol Pete" Eaton</h3>
+<div class="outline-text-3" id="text-1-2">
+</div>
+<div id="outline-container-orgf16df61" class="outline-4">
+<h4 id="orgf16df61"><span class="section-number-4">1.2.1</span> Summertime Render</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+Just have to get a couple things out of the way up top. First, I'd already read the manga by the time I watched most of these episodes (started them both at around the same time but read through the manga first and then caught up with the anime as it finished airing). As a result, most of my review will focus on the anime-specific parts of the series. Second, when I mentioned that I was doing a little scavenger hunt watching this, you'd suggested that I was keeping an eye out for which characters were shadows. That was a good guess, but not quite. While watching the first episode, I thought there were a lot of visual motifs with light and camera effects, so I was collecting examples of that. It was fun to speculate about what would last through the series as opposed to just being the quirk of a particular episode's director. And there was one thing I only noticed well into the series and then ended up thoroughly confused with by the end. These are all fairly disconnected, so I'll just list them out: (just to be clear, all these links have spoiler material in them)
+</p>
+
+<ul class="org-ul">
+<li>Reflections: For a show that deals with impersonation, this felt like a fairly route one visual metaphor. But despite being introduced in the very <a href="https://imgur.com/a/0YUXZML">first episode</a>, it didn't reoccur as often as I'd <a href="https://imgur.com/a/z6oOj6R">hoped</a>.</li>
+
+<li>Shadows: "This is a show about evil shadows, of course they have shadows in it." Yeah, I agree but I'm referring to <a href="https://imgur.com/a/owbEOi5">storytelling shadows</a>.</li>
+
+<li>Bokeh: Did you know that bokeh came from the Japanese "boke" meaning haze or blur? Me neither. Don't think that etymology matters, but the show sure used a <a href="https://imgur.com/a/7bpQ5Ag">lot of it</a>.</li>
+
+<li>Eye reflections: This is the one I didn't cotton onto for a while, and when I did it was more for the intensity it had in that particular <a href="https://imgur.com/a/Pf2HSuv">instance</a>. But then I started to form this theory that the two dominant eye reflection types in the show: (1) big circle at the top with little ovals towards the middle and (2) just two little ovals towards the middle, might have some meaning. Maybe the good guys have type 1 and the baddies have type 2 (and Shinpei having both in episode five was due to him having Haine's evil eye?). By the end of the series I don't think I can stand by that hypothesis, but it was fun to <a href="https://imgur.com/a/a1MYjZa">look out for</a>.</li>
+
+<li>Blur: There were a lot of instances of characters being stricken by some information and getting a close-up of their reaction where the camera wiggles around and <a href="https://imgur.com/a/5bhmTlc">blurs</a> in and out. There were so many examples of this in the last few episodes that I just gave up screenshotting them.</li>
+
+<li>Miscellany: These either appeared too <a href="https://imgur.com/a/ayvaXhQ">infrequently/inconsequentially</a> (as far as I could tell) or appeared in a single episode and therefore felt more like that episode director's personal <a href="https://imgur.com/a/INyJuOy">quirks</a> than a series-wide choice.</li>
+</ul>
+
+<p>
+8/10 Best explanation for why one of the characters is wearing a bathing suit throughout the series for Ushio's "I can fight in it"
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3cf13ce" class="outline-4">
+<h4 id="org3cf13ce"><span class="section-number-4">1.2.2</span> Ao Ashi</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+I definitely enjoyed this adaptation, but that's more due to: (a) my liking the source material and (b) occasional bright spots of animation or emotional climax. That is to say, there were big chunks of this show that were not fun. But that is only relative to other anime that I would normally choose to sit through 24 episodes of. In comparison to other sports anime, or to other soccer anime specifically, this was good.
+</p>
+
+<p>
+There were a couple of fun animation thing-ama-jigs that I watched for. The use of rotoscoping, which I think first appeared in episode two with a scene of Ashito turning, was sort of sprinkled through the first cour. And it featured quite heavily in the second cour's opening, but not so much in the actual episodes. In return, the animation quality during the second cour took a step up (in general, cause there were also plenty of extended still shots and cop outs). It felt like there were a few animator favorite characters - Togashi, Yoshitsune and Kaneda - who got a disproportionately high level of movement quality. Maybe someone at Production I.G. just loves the lanky bigboys?
+</p>
+
+<p>
+7/10 Most Physics-Defying Animation for the CG soccer ball that never changed size as it moved towards the camera
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf1f6dbf" class="outline-4">
+<h4 id="orgf1f6dbf"><span class="section-number-4">1.2.3</span> Onipan</h4>
+<div class="outline-text-4" id="text-1-2-3">
+<p>
+Since you seemed surprised that I was actually watching this, I have resolved myself to wholeheartedly defend this show. It's a show about young people, sorry, oni (onii? onieces? onipodes?) trying to change the Japanese peoples' perception of oni. They demonstrate remarkable ingenuity, bravery, and pure-heartedness to overcome every obstacle in their way to make Japan a more openminded place.
+</p>
+
+<p>
+Is what I would say if this was a kids show. Which I guess it is, but a Japanese kids show from Wit Studio who seem to have allowed the production to have all the hallmarks of a children's show (long&#x2026;pauses&#x2026;in&#x2026;the&#x2026;dialogues, bright colors, bite-sized episodic plots) but with some treats thrown in for a dweeb like me.
+</p>
+
+<p>
+That's not to say this is a great show, or even particularly good. It just had enough morsels of interest spread throughout to keep me watching. The comedic animation could be quite good, with fun <a href="https://imgur.com/a/jRpF203">smears</a> and reaction <a href="https://imgur.com/a/NXjcIdT">shots</a>. Most episodes that weren't contributing towards the series plot took the form of a parody, from battle towers, to <a href="https://imgur.com/a/FmEnIuv">Yu-Gi-Oh</a>, to <a href="https://imgur.com/a/rk0hfvS">idols</a>, to <a href="https://imgur.com/a/QRzw0vv">youtubers</a>. And the sense of humor, while usually not my thing, could be amusingly <a href="https://imgur.com/a/I7LjPqS">self-aware</a>, <a href="https://imgur.com/a/bUGsvLg">dark</a>, or over the top.
+</p>
+
+<p>
+6/10 Most surprisingly well-animated fight scene for episode 7's <a href="https://imgur.com/a/0f4Y4iK">sea battle</a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgaa05c4e" class="outline-3">
+<h3 id="orgaa05c4e"><span class="section-number-3">1.3</span> William Frederick "Buffalo Bill" Cody</h3>
+<div class="outline-text-3" id="text-1-3">
+</div>
+<div id="outline-container-org960f58a" class="outline-4">
+<h4 id="org960f58a"><span class="section-number-4">1.3.1</span> Overlord IV</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<p>
+There was politics in this season. And there were fights, I guess. Oh, and there were a bunch of countries. What, that's not just another way to say "politics", it's &#x2026; geography or something.
+</p>
+
+<p>
+I can't get over that Ains kept going on about how he wants friends or to nurture independence among the Nazarickians, but he can't admit to any shortcomings. Sure, it's comedy at first, but if I'm expected to seriously buy that Ains is lonely or fatherly, I can't also laugh at his glowy, green straight man act.
+</p>
+
+<p>
+And I thought the politics were just an extension of that same dichotomy and the fights were kinda ketch' (weak sauce).
+</p>
+
+<p>
+4/10 Best dwarf for the dwarf who was willing to straight-up "British Empire" the artifacts of his own peoples' cultural heritage
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfc65c99" class="outline-4">
+<h4 id="orgfc65c99"><span class="section-number-4">1.3.2</span> Danmachi IV</h4>
+<div class="outline-text-4" id="text-1-3-2">
+<p>
+I can't get over that this eleven-episode season ended on a cliff-hanger when it felt like there were at least three episodes of unadulterated fluff. At some point in the season, I thought there could be a well-conceived arc to the episodes. We get to see the gang get back together ("Oh, it's wingman." "Oh, it's wingwoman." "Oh, it's 'girl who likes Bell'."), then they get into a sticky situation where the group's reliance on Bell is exposed, but there's a little character development, and finally they get into an even stickier situation but this time the group grows and is able to pull them through it. Welp, maybe next season will be fun.
+</p>
+
+<p>
+5/10 Best supporting actress for Aisha's boob cloth (everyone applauds because it should have won a couple seasons ago, but was overshadowed by Hestia's ribbon)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge8a932f" class="outline-4">
+<h4 id="orge8a932f"><span class="section-number-4">1.3.3</span> MADE IN ABYSS</h4>
+<div class="outline-text-4" id="text-1-3-3">
+<p>
+I was in a state of constant, minor confusion by the different characters' motivations in the city and still don't really understand why Wazukyan and Belaf made a bunch of decisions. But I was still grossed out, sad, and hyped up at the appropriate moments. There were lots of vagina monsters, sorry, hollows. And the climactic battles were exciting. I'd only recently watched the third movie, and the action animation in this series didn't live up to that standard, but it feels unfair to compare a television series and a movie.
+</p>
+
+<p>
+8/10 Best fuzzy pink penis character for Maaa
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb807410" class="outline-3">
+<h3 id="orgb807410"><span class="section-number-3">1.4</span> Charlie Siringo</h3>
+<div class="outline-text-3" id="text-1-4">
+</div>
+<div id="outline-container-orgb239037" class="outline-4">
+<h4 id="orgb239037"><span class="section-number-4">1.4.1</span> Isekai Ojisan</h4>
+<div class="outline-text-4" id="text-1-4-1">
+<p>
+Well, better luck next season.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd8f846e" class="outline-4">
+<h4 id="orgd8f846e"><span class="section-number-4">1.4.2</span> Lycoris Recoil</h4>
+<div class="outline-text-4" id="text-1-4-2">
+<p>
+Lycoris Recoil isn't really for me, but it was a fun watch. The action scenes were exciting and the relationship between Takina and Chisato was a neat driving force through the season. After establishing their opposing viewpoints on the Lycoris, killing, and underwear, we got to see them grow closer. I would say in a lot of little ways, that closeness was due to Takina changing - not immediately killing everyone, being willing to sacrifice her standing with the Lycoris, taking an interest in the cafe (in ascending order of importance, of course). Not until the very end would I really say Chisato changed, and even that's not really a character change, she was just (spoiler) forced to keep living by Mika and Takina. But whatever, Majima was a more interesting villain than I expected, just as a consequence of questioning the conceit of the show "teenage girls protect Japan by shooting guns".
+</p>
+
+<p>
+7/10 Best speculative architecture for the semi-destroyed building that Japan inexplicably decided to preserve as a monument to terrorism? Or as a monument to Chisato saving people? But no, she's a secret, right?
+</p>
+</div>
+</div>
+
+<div id="outline-container-org616d22a" class="outline-4">
+<h4 id="org616d22a"><span class="section-number-4">1.4.3</span> Bucchigire!</h4>
+<div class="outline-text-4" id="text-1-4-3">
+<p>
+I dropped this after 10 episodes. It was the last show I was waiting on watching before sending my reviews and I suddenly realized while out on a walk and contemplating anime, "Hey, watch where you're going! Jesus Christ!" And as I crushed that ant below my shoe, the fragility of life and also how much more entertaining non-Bucchigire! shows can be struck me.
+</p>
+
+<p>
+In terms of actual critique, the texture that they placed over everything sometimes added to the vibe of the show, but often (especially when placed over a darker scene) looked messy and felt like a ripoff of Odd Taxi's textured look.
+</p>
+
+<p>
+Uh, for a show with color-coordinated characters, it was a bit of a weird throwback that the two most prominent (not very prominent) female characters (the girl in the Shinsengumi and the sister of that sheriff from a single episode) were both pink.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org35a2758" class="outline-4">
+<h4 id="org35a2758"><span class="section-number-4">1.4.4</span> Warau Arsnotoria Sun&#x2013;!</h4>
+<div class="outline-text-4" id="text-1-4-4">
+<p>
+This is one of the finest mystery shows of the last decade. In that it is apparently based off of a game, but I never had any idea what kind of game that could be. There are girls, so is it a dating sim? I guess there's "fighting" in the OP and a couple episodes, so it could be some sort of action game? There's music, so it could be a rhythm game. Every episode aludes to some malicious group of "knights" that could storm the school, so maybe tower defense? I still refuse to find out what this game is, because the anime sucked.
+</p>
+
+<p>
+I sat through 12 episodes of two characters drinking tea (there are five main characters, but I think of them as only having enough depth for two characters in any self-respecting series), and maddening allusions to some broader story that I never got! I wanted to write that this is the ultimate edging anime, but that is too generous to the term. This is like eternally being an awkward middle schooler who tries to walk past people as they sneeze to get sexual gratification.
+</p>
+
+<p>
+Where plot is <a href="https://imgur.com/a/9sCS237">concerned</a>. There is a succession of minor <a href="https://imgur.com/a/im9exSC">conflicts</a> but nothing consequential enough to really matter in subsequent <a href="https://imgur.com/a/BWlxNxB">episodes</a>. What bugs me most is that there are weird moments that slightly raised my expectations over the course of the series. Apart from the obvious "big bad" that was setup throughout, there was a threat to the safety of the girls' school introduced in the first couple episodes that was completely ignored in the remainder, they left the school in one episode and alerted the "big bad" but then <b>bloop-blap</b> nothing resulted. Heck, one girl often doesn't "have enough mana for biscuits" and at the end she "has just enough mana". That's probably the only satisfying character arc in the show, and I don't even understand what "mana" is in this world, 'cause it sure as heck isn't being used for exciting magic junk!
+</p>
+
+<p>
+Regarding aesthetics, the character designs were obviously too complex for the animators, who are forced to rely on a whole lot of cuts with only a couple frames of movement or just lose any consistency in character models. The backgrounds can be nice, but the direction is very vanilla so this whole magical school campus they were establishing felt stale after a few episodes.
+</p>
+
+<p>
+4/10 Cutest domestic servants for the fairies (library, kitchen and miscellaneous)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga7581b7" class="outline-4">
+<h4 id="orga7581b7"><span class="section-number-4">1.4.5</span> Yurei Deco</h4>
+<div class="outline-text-4" id="text-1-4-5">
+<p>
+Finally, an anime PSA for kids about the dangers of misinformation and social media. My biggest gripe with the show is that I couldn't get over that comparison and it was hard to look for any deeper meanings (if they existed). But the narrative was well put together (a lot of episodic adventures that fleshed out the detective club members' backstories and fed into the larger mystery of Phantom Zero), the world was fun (a very bleak, utilitarian cityscape underneath kind of tacky glowing shapes), there were some excellent character designs (who doesn't love a business cat?), and moments of squishy, stretchy, shapey animation. Just not as much squishy, stretchy, shapey animation as I was hoping for. I also couldn't get out of my head that if this was a more Yuasa-ish production, the digital worlds would have been way more psychedelic and less like a Bauhaus-loving but window-fearing architect's renderings.
+</p>
+
+<p>
+Still, there were good high points, like the digital world in the zoological episode and the search for a mystery ramen stand.
+</p>
+
+<p>
+7/10 Best names that I should probably think about the intended meanings of, but just haven't for Tom Sawyer city, Mark Twain, &#x2026; Oh, "The Adventures of Huckleberry Finn" -&gt; Hack-Berry-Finn, that's something  at least.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb95a3fa" class="outline-4">
+<h4 id="orgb95a3fa"><span class="section-number-4">1.4.6</span> KJ File</h4>
+<div class="outline-text-4" id="text-1-4-6">
+<p>
+As far as I can tell, none of this ever got subtitled.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1ed7b6c" class="outline-3">
+<h3 id="org1ed7b6c"><span class="section-number-3">1.5</span> Theodore Roosevelt + Whatever I didn't write about before the season but ended up watching</h3>
+<div class="outline-text-3" id="text-1-5">
+</div>
+<div id="outline-container-org52d4244" class="outline-4">
+<h4 id="org52d4244"><span class="section-number-4">1.5.1</span> Hoshi no Samidare</h4>
+<div class="outline-text-4" id="text-1-5-1">
+<p>
+I dropped this after watching the fourth episode, where this little gem of a <a href="https://imgur.com/a/FKD5aIL">frame</a> appeared.
+</p>
+
+<p>
+This lowered my opinion of Mizukami Satoshi.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org82c2f29" class="outline-4">
+<h4 id="org82c2f29"><span class="section-number-4">1.5.2</span> Musashino</h4>
+<div class="outline-text-4" id="text-1-5-2">
+<p>
+I guess this is an advertisement for some locality in Japan. And they chose to promote their region in the form of a <a href="https://imgur.com/a/C0hb9Da">memeworthy</a> anime? I wouldn't say this was good, but it was short.
+</p>
+
+<p>
+5/10 Best sport for <a href="https://imgur.com/a/1kqtlGG">UWAAR</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8795f39" class="outline-4">
+<h4 id="org8795f39"><span class="section-number-4">1.5.3</span> Fuuto Tantei</h4>
+<div class="outline-text-4" id="text-1-5-3">
+<p>
+I gave this one episode but was not into it.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf834961" class="outline-4">
+<h4 id="orgf834961"><span class="section-number-4">1.5.4</span> Cyberpunk Edgerunners</h4>
+<div class="outline-text-4" id="text-1-5-4">
+<p>
+Wowwie Maui. Now this is how Warau Arsnotoria should have been adapted. I can just imagine those little girls absolutely high out of their minds on Earl Grey jamming scones down each others throats until they burst.
+</p>
+
+<p>
+This is basically the peak of the CGDCT* trope. I will never play this game, but gosh darn did this anime make me aware that there is a game called Edgerunners 2069!
+</p>
+
+<p>
+Now that I've gotten all that out of the way, time to get down to bras tax. I thought the show did a great job of fitting a satisfying story arc into ten action-packed episodes. I couldn't point out any extraneous scenes or characters and just about every character's decisions and reactions felt justified in the universe's logic**.
+</p>
+
+<p>
+The action was pointy, stretchy, colorful, and violent. I enjoyed the few times they would repeat a passage of a battle from several angles. There are a couple choices/scenes that will stay with me for a while:
+</p>
+
+<ul class="org-ul">
+<li>The really superb, Hellboy-esque (or Trigger-esque, but it feels like it's been a while since they've done this kind of dark stuff) shadows during some of the action scenes.</li>
+
+<li>(Spoilers) In episode six, the motif of Maine hitting David: Maine's early "Get away from me! Stop bugging me!"-type pushing away, his later "Get a grip! You couldn't handle Tanaka and now we're in deep shit!", and his final sentimental "So long kid" in the psychosis desert. Also, really liked David's shock and grief in the car at the end of the episode, with strong shadows over him.</li>
+
+<li>(Spoilers) The whole scene with Doc Ripper in episode eight, from his loopy wiggling fingers animation to his disappointment and sadness as he sits along in the dark apartment at the end.</li>
+</ul>
+
+<p>
+One bothersome thought I had was that this felt, a little bit in the overall tone but particularly in the music choices, like it was trying to evoke Arcane ('cause Arcane had an Imagine Dragons song and a lot of the music in this series felt similar). Guess I would have preferred something more electronic or jazzy, but plop rock was a choice.
+</p>
+
+<p>
+\* Cyberpunk Gangsters Destroying Corporate Toughs.
+</p>
+
+<p>
+\** Spoiler: I don't understand if Kiwi turned on Lucy and the gang because she blamed them for Maine and Dorio's deaths or out of greed or something I missed. Her dialogue with Faraday made me think she didn't blame them, but she had such a flat inflection that it was hard to read into her motivations.
+</p>
+
+<p>
+8/10 Best counterargument to my preference for shady anime aggregators instead of watching on (in this case) Netflix for the crappy subtitles I watched the first eight episodes with (This might be a 9/10 anime if I'd watched with good subs (Yes, I mean the sandwiches (Yes, I mean the "cruel" definition of "mean" (No, this time I mean the "meaning of" definition of "mean"))))
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd59ebd5" class="outline-3">
+<h3 id="orgd59ebd5"><span class="section-number-3">1.6</span> ED</h3>
+<div class="outline-text-3" id="text-1-6">
+<p>
+Sigh-onara,
+</p>
+
+<p>
+Eric
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Eric</p>
+<p class="date">Created: 2023-04-20 Thu 17:00</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
