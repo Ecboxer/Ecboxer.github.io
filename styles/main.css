@@ -30,18 +30,13 @@ li a {
     color: #048;
     padding: 0px 0px;
     text-decoration: none;
-    /* text-align: center; */
-}
-li a:hover {
-    background-color: #555;
-    color: white;
 }
 a:link {
     color: #048;
     text-decoration: none;
 }
 a:visited {
-    color: #048;
+    color: #548;
     text-decoration: none;
 }
 footer {
