@@ -289,3 +289,14 @@ Are wet entrails 'round a mind.
    Guarding the front of the train.
 
    The Sun's in my eyes.
+* Work
+** This used to be on my "About" page
+There was a data scientist
+
+Who helped some folks to get the gist
+
+Of problems they were facing.
+
+Often this would mean chasing
+
+Buggy code that he'd somehow missed. 
