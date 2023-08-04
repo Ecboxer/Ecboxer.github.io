@@ -28,7 +28,7 @@ li {
 li a {
     display: inline;
     color: #048;
-    padding: 0px 0px;
+    padding: 10px 10px;
     text-decoration: none;
 }
 a:link {
