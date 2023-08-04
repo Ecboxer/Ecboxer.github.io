@@ -25,12 +25,12 @@ ul {
 li {
     float: left;
 }
-/* li a { */
-/*     display: inline; */
-/*     color: #048; */
-/*     padding: 0px 0px; */
-/*     text-decoration: none; */
-/* } */
+li a {
+    display: inline;
+    color: #048;
+    padding: 0px 0px;
+    text-decoration: none;
+}
 a:link {
     color: #048;
     text-decoration: none;
@@ -40,6 +40,6 @@ a:visited {
     text-decoration: none;
 }
 footer {
-    bottom: 10px;
-    margin-bottom: 10;
+    bottom: 20px;
+    margin-bottom: 20;
 }
