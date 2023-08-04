@@ -32,6 +32,10 @@ li a {
     text-decoration: none;
     text-align: center;
 }
+li a:hover {
+    background-color: #555;
+    color: white;
+}
 a:link {
     color: #048;
     text-decoration: none;
